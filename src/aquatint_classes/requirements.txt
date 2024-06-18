@@ -1,0 +1,6 @@
+axicli==3.9.4
+svgpathtools==1.6.1
+svg.path==6.3
+seaborn
+pillow==10.2.0
+pandas==2.2.1
