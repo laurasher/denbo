@@ -50,7 +50,7 @@ class ProgrammaticAquatint:
             x="x_val",
             y="y_val",
             s=size,
-            hue="data_channel",
+            # hue="data_channel",
             legend=False,
         )
         fig = plt.get_figure()

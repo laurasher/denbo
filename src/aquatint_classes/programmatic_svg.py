@@ -46,9 +46,17 @@ class ProgrammaticSvgManipulator:
         # Usable pen travel (inches): 34.02 × 23.39 inches.
         self.MAX_X = 34.02  # inches
         self.MAX_Y = 23.39  # inches
+        ### These 3 were for 4 proofs on paper ###
         # self.scalar = 4.8
         # self.scalar = 6.4 #higher is smaller scale
-        self.scalar = 7.6 #higher is smaller scale
+        # self.scalar = 7.6 #higher is smaller scale 
+        ### These 3 were for 4 proofs on paper ###
+
+        ### These are experiments for 9x12 plates ###
+        # self.scalar = 8 #rocks_and_sea_crop_4_v3
+        self.scalar = 12 #lop56011_crop4
+        ###  ###
+
         self.starting_origin = [0, 3]
 
         # Load in file
