@@ -49,12 +49,11 @@ class ProgrammaticSvgManipulator:
         ### These 3 were for 4 proofs on paper ###
         # self.scalar = 4.8
         # self.scalar = 6.4 #higher is smaller scale
-        # self.scalar = 7.6 #higher is smaller scale 
+        # self.scalar = 7.6 #higher is smaller scale
         ### These 3 were for 4 proofs on paper ###
 
         ### These are experiments for 9x12 plates ###
-        # self.scalar = 8 #rocks_and_sea_crop_4_v3
-        self.scalar = 8.8 #lop56011_crop4
+        self.scalar = 8.8
         ###  ###
 
         self.starting_origin = [0, 3]
@@ -151,12 +150,14 @@ class ProgrammaticSvgManipulator:
             # self.ad.moveto(xy[1] + of, xy[0] + of)
             # self.ad.moveto(xy[1], xy[0] + of)
             # self.ad.moveto(xy[1], xy[0])
-            self.ad.draw_path([
-                [xy[1] + of, xy[0]],
-                [xy[1] + of, xy[0] + of],
-                [xy[1], xy[0] + of],
-                [xy[1], xy[0]]
-                ])
+            self.ad.draw_path(
+                [
+                    [xy[1] + of, xy[0]],
+                    [xy[1] + of, xy[0] + of],
+                    [xy[1], xy[0] + of],
+                    [xy[1], xy[0]],
+                ]
+            )
             return
         except Exception as e:
             self.cls_log(f"Unable to draw_manual_circle {e}")

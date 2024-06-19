@@ -7,11 +7,12 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-'''
+"""
 This class takes an image path and various parameters as inputs, 
 and outputs a preview "aquatint" image plot and a csv file of
 the aquatint points (x,y) locations.
-'''
+"""
+
 
 class ProgrammaticAquatint:
     def __init__(
@@ -36,8 +37,11 @@ class ProgrammaticAquatint:
         self.data_channel_division_factor = data_channel_division_factor
         self.plot_point_size = plot_point_size
         self.image_output_path = os.path.join(
-            self.output_path, self.image_path.split(".")[0].replace("imgs/", ""), 
-            f"div_factor_{data_channel_division_factor}_point_size_{plot_point_size}".replace(".", "p")
+            self.output_path,
+            self.image_path.split(".")[0].replace("imgs/", ""),
+            f"div_factor_{data_channel_division_factor}_point_size_{plot_point_size}".replace(
+                ".", "p"
+            ),
         )
 
     def cls_log(self, msg):
@@ -91,7 +95,7 @@ class ProgrammaticAquatint:
         os.makedirs(self.image_output_path, exist_ok=True)
         img_file = Image.open(self.image_path)
         img_file.save(os.path.join(self.image_output_path, f"original.png"))
-        
+
         # Invert the grayscale for katazome printing
         # img_file = ImageOps.invert(img_file)
         # img_file.save(os.path.join(self.image_output_path, f"original_inverted.png"))
@@ -131,7 +135,6 @@ class ProgrammaticAquatint:
         flattened_output_path = os.path.join(self.image_output_path, f"flattened.csv")
         df_stacked.to_csv(flattened_output_path, index=False)
         self.cls_log(f"Wrote flattened csv to {flattened_output_path}")
-
 
         # Try sampling the image- I don't really use this
         sr_str = f"{self.sample_rate}".replace(".", "p")
