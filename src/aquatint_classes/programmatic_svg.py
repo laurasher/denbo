@@ -54,7 +54,7 @@ class ProgrammaticSvgManipulator:
 
         ### These are experiments for 9x12 plates ###
         # self.scalar = 8 #rocks_and_sea_crop_4_v3
-        self.scalar = 12 #lop56011_crop4
+        self.scalar = 8.8 #lop56011_crop4
         ###  ###
 
         self.starting_origin = [0, 3]
