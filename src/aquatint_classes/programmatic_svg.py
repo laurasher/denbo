@@ -53,7 +53,7 @@ class ProgrammaticSvgManipulator:
         ### These 3 were for 4 proofs on paper ###
 
         ### These are experiments for 9x12 plates ###
-        self.scalar = 8.8
+        self.scalar = 12
         ###  ###
 
         self.starting_origin = [0, 3]
