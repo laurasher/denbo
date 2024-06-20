@@ -37,7 +37,7 @@ psm = ProgrammaticSvgManipulator(aq_file)
 psm.calc_xy_size()
 # psm.axidraw_xy_bounding_box()
 # psm.axidraw_calibrate()
-# psm.axidraw_xy_dots_inches()
+psm.axidraw_xy_dots_inches()
 
 """
 # This is still under construction. The input file here is an svg, not an image.
