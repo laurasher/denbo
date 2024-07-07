@@ -230,7 +230,8 @@ class ProgrammaticSvgManipulator:
     def axidraw_xy_dots_inches(self):
         self.initialize_ad()
         self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
-        of = 0.025
+        # of = 0.025
+        of = 0.01
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
@@ -238,9 +239,9 @@ class ProgrammaticSvgManipulator:
             # offset_xy = self.add_current_pos_to_path(xy_current_pos)
             for ii, xy in enumerate(offset_xy):
                 self.ad.moveto(xy[1], xy[0])
-                self.ad.pendown()
-                # self.draw_manual_circle(xy, of)
-                self.ad.penup()
+                # self.ad.pendown()
+                self.draw_manual_circle(xy, of)
+                # self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()
