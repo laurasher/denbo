@@ -233,12 +233,12 @@ class ProgrammaticSvgManipulator:
         self.initialize_ad()
         self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
         # of = 0.025
+        of = 0.01 # first baren test
         of = 0.03
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
             offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            # offset_xy = self.add_current_pos_to_path(xy_current_pos)
             for ii, xy in enumerate(offset_xy):
                 self.ad.moveto(xy[1], xy[0])
                 # self.ad.pendown()
