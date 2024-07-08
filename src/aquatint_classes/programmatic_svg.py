@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import json
+import datetime
 from pyaxidraw import axidraw
 
 
@@ -46,13 +47,8 @@ class ProgrammaticSvgManipulator:
         # Usable pen travel (inches): 34.02 × 23.39 inches.
         self.MAX_X = 34.02  # inches
         self.MAX_Y = 23.39  # inches
-        ### These 3 were for 4 proofs on paper ###
-        # self.scalar = 4.8
-        # self.scalar = 6.4 #higher is smaller scale
-        # self.scalar = 7.6 #higher is smaller scale
-        ### These 3 were for 4 proofs on paper ###
 
-        ### These are experiments for 9x12 plates ###
+        ### These are for 9x12 plates ###
         self.scalar = 9.5
         ###  ###
 
@@ -97,8 +93,6 @@ class ProgrammaticSvgManipulator:
 
             # paint marker for acetate positive settings
             self.ad.options.speed_pendown = 55  # default 25
-            # self.ad.options.speed_pendown = 100  # default 25
-            # self.ad.options.speed_penup = 100
             self.ad.options.pen_pos_up = 100
             self.ad.options.pen_pos_down = 40
 
@@ -228,10 +222,18 @@ class ProgrammaticSvgManipulator:
         return
 
     def axidraw_xy_dots_inches(self):
+        fname = f'{self.filename.replace("aquatint_pixel_concat.csv", "")}times.txt'
+
+        self.cls_log(f"Writing start time to {fname}")
+        f = open(fname, "a")
+        f.write(f"Starting print for {self.filename}")
+        f.write(f"--- Start: {datetime.datetime.now()}")
+        f.close()
+
         self.initialize_ad()
         self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
         # of = 0.025
-        of = 0.01
+        of = 0.03
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
@@ -254,6 +256,13 @@ class ProgrammaticSvgManipulator:
         # Move home when finished
         self.ad.moveto(0, 0)
         self.ad.disconnect()
+
+        self.cls_log(f"Writing end time to {fname}")
+        f = open(fname, "a")
+        f.write(f"Finishing print for {self.filename}")
+        f.write(f"--- End: {datetime.datetime.now()}")
+        f.close()
+
         return
 
     def axidraw_xy_path(self):
