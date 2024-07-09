@@ -224,7 +224,7 @@ class ProgrammaticSvgManipulator:
     def axidraw_xy_dots_inches(self):
         fname = f'{self.filename.replace("aquatint_pixel_concat.csv", "")}times.txt'
 
-        self.cls_log(f"Writing start time to {fname}")
+        self.cls_log(f"Writing start time to {fname}: {datetime.datetime.now()}")
         f = open(fname, "a")
         f.write(f"Starting print for {self.filename}")
         f.write(f"--- Start: {datetime.datetime.now()}")
@@ -233,8 +233,8 @@ class ProgrammaticSvgManipulator:
         self.initialize_ad()
         self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
         # of = 0.025
-        of = 0.01 # first baren test
-        of = 0.03
+        # of = 0.01 # first baren test
+        of = 0.01
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
@@ -257,7 +257,7 @@ class ProgrammaticSvgManipulator:
         self.ad.moveto(0, 0)
         self.ad.disconnect()
 
-        self.cls_log(f"Writing end time to {fname}")
+        self.cls_log(f"Writing end time to {fname}: {datetime.datetime.now()}")
         f = open(fname, "a")
         f.write(f"Finishing print for {self.filename}")
         f.write(f"--- End: {datetime.datetime.now()}")
