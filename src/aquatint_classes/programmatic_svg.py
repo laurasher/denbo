@@ -227,7 +227,7 @@ class ProgrammaticSvgManipulator:
         self.cls_log(f"Writing start time to {fname}: {datetime.datetime.now()}")
         f = open(fname, "a")
         f.write(f"Starting print for {self.filename}")
-        f.write(f"--- Start: {datetime.datetime.now()}")
+        f.write(f"\n--- Start: {datetime.datetime.now()}")
         f.close()
 
         self.initialize_ad()
@@ -238,7 +238,8 @@ class ProgrammaticSvgManipulator:
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
                 self.ad.moveto(xy[1], xy[0])
                 # self.ad.pendown()
@@ -260,7 +261,7 @@ class ProgrammaticSvgManipulator:
         self.cls_log(f"Writing end time to {fname}: {datetime.datetime.now()}")
         f = open(fname, "a")
         f.write(f"Finishing print for {self.filename}")
-        f.write(f"--- End: {datetime.datetime.now()}")
+        f.write(f"\n--- End: {datetime.datetime.now()}")
         f.close()
 
         return
