@@ -48,8 +48,13 @@ class ProgrammaticSvgManipulator:
         self.MAX_X = 34.02  # inches
         self.MAX_Y = 23.39  # inches
 
+        # Higher is smaller
         ### These are for 9x12 plates ###
-        self.scalar = 9.5
+        # self.scalar = 9.5
+        ###  ###
+
+        ### These are for 18x24 plates ###
+        self.scalar = 5.4
         ###  ###
 
         self.starting_origin = [0, 3]
@@ -146,6 +151,7 @@ class ProgrammaticSvgManipulator:
             # self.ad.moveto(xy[1], xy[0])
             self.ad.draw_path(
                 [
+                    [xy[1], xy[0]],                    
                     [xy[1] + of, xy[0]],
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
@@ -234,7 +240,7 @@ class ProgrammaticSvgManipulator:
         self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
         # of = 0.025
         # of = 0.01 # first baren test
-        of = 0.01
+        of = 0.02
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
