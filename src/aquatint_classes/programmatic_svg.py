@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import json
+import datetime
 from pyaxidraw import axidraw
 
 
@@ -52,8 +53,14 @@ class ProgrammaticSvgManipulator:
         # self.scalar = 7.6 #higher is smaller scale
         ### These 3 were for 4 proofs on paper ###
 
-        ### These are experiments for 9x12 plates ###
+        # Higher is smaller
+        ### These are for 9x12 plates ###
+        # self.scalar = 9.5
         self.scalar = 12
+        ###  ###
+
+        ### These are for 18x24 plates ###
+        # self.scalar = 5.4
         ###  ###
 
         self.starting_origin = [0, 3]
@@ -97,8 +104,6 @@ class ProgrammaticSvgManipulator:
 
             # paint marker for acetate positive settings
             self.ad.options.speed_pendown = 55  # default 25
-            # self.ad.options.speed_pendown = 100  # default 25
-            # self.ad.options.speed_penup = 100
             self.ad.options.pen_pos_up = 100
             self.ad.options.pen_pos_down = 40
 
@@ -152,6 +157,7 @@ class ProgrammaticSvgManipulator:
             # self.ad.moveto(xy[1], xy[0])
             self.ad.draw_path(
                 [
+                    [xy[1], xy[0]],                    
                     [xy[1] + of, xy[0]],
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
@@ -228,15 +234,23 @@ class ProgrammaticSvgManipulator:
         return
 
     def axidraw_xy_dots_inches(self):
+        fname = f'{self.filename.replace("aquatint_pixel_concat.csv", "")}times.txt'
+
+        self.cls_log(f"Writing start time to {fname}: {datetime.datetime.now()}")
+        f = open(fname, "a")
+        f.write(f"Starting print for {self.filename}")
+        f.write(f"\n--- Start: {datetime.datetime.now()}")
+        f.close()
+
         self.initialize_ad()
         self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
         # of = 0.025
-        of = 0.01
+        of = 0.02
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            # offset_xy = self.add_current_pos_to_path(xy_current_pos)
+            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
                 self.ad.moveto(xy[1], xy[0])
                 # self.ad.pendown()
@@ -254,6 +268,13 @@ class ProgrammaticSvgManipulator:
         # Move home when finished
         self.ad.moveto(0, 0)
         self.ad.disconnect()
+
+        self.cls_log(f"Writing end time to {fname}: {datetime.datetime.now()}")
+        f = open(fname, "a")
+        f.write(f"Finishing print for {self.filename}")
+        f.write(f"\n--- End: {datetime.datetime.now()}")
+        f.close()
+
         return
 
     def axidraw_xy_path(self):

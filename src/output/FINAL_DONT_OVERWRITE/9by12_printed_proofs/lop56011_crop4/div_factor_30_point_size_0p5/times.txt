@@ -1,0 +1,5 @@
+Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-10 15:16:07.214194Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-10 15:17:00.276688Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-10 15:35:35.816511Finishing print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- End: 2024-07-11 05:12:05.880348
