@@ -87,19 +87,18 @@ class ProgrammaticSvgManipulator:
             self.ad.connect()
             self.ad.options.model = 5
             self.ad.options.units = self.units
+
+            self.ad.options.speed_pendown = 110  # default 25
+            self.ad.options.speed_penup = 110  # default 25
+
             # fine sharpie settings
             # self.ad.options.pen_pos_up = 65 #default 60
-            # self.ad.options.pen_pos_down = 5 #default 40
-
-            # xl sharpie settings, sharpie sitting on cap ledge
-            # self.ad.options.speed_pendown = 55  # default 25
-            # self.ad.options.pen_pos_up = 100
-            # self.ad.options.pen_pos_down = 40
-
-            # paint marker for acetate positive settings
-            self.ad.options.speed_pendown = 55  # default 25
-            self.ad.options.pen_pos_up = 100
+            self.ad.options.pen_pos_up = 60 #default 60
             self.ad.options.pen_pos_down = 40
+            # self.ad.options.pen_pos_down = 38
+            # self.ad.options.pen_pos_down = 32
+
+            
 
             self.ad.update()
         except Exception as e:
@@ -156,6 +155,9 @@ class ProgrammaticSvgManipulator:
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
                     [xy[1], xy[0]],
+                    [xy[1] + of, xy[0] + of],
+                    [xy[1] + of, xy[0]],
+                    [xy[1], xy[0] + of],
                 ]
             )
             return
@@ -240,17 +242,20 @@ class ProgrammaticSvgManipulator:
         self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
         # of = 0.025
         # of = 0.01 # first baren test
-        of = 0.02
+        of = 0.04
+        # of = 0.03
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
+            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[52220:]
             for ii, xy in enumerate(offset_xy):
-                self.ad.moveto(xy[1], xy[0])
-                # self.ad.pendown()
-                self.draw_manual_circle(xy, of)
-                # self.ad.penup()
+                # if xy[0]>=0.73:
+                if xy[0]>=10.6:
+                    self.ad.moveto(xy[1], xy[0])
+                    # self.ad.pendown()
+                    self.draw_manual_circle(xy, of)
+                    # self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()
