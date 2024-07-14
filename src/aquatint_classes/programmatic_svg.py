@@ -54,7 +54,7 @@ class ProgrammaticSvgManipulator:
         ###  ###
 
         ### These are for 18x24 plates ###
-        self.scalar = 5.4
+        self.scalar = 7.3
         ###  ###
 
         self.starting_origin = [0, 3]
@@ -175,17 +175,21 @@ class ProgrammaticSvgManipulator:
         _maxy = max([_x[0] for _x in offset_xy])
         _miny = min([_x[0] for _x in offset_xy])
 
+        '''
         # Divide edges into divs, draw criss cross to test arm height
         div = 8
         diffx = (_maxx - _minx) / div
         diffy = (_maxy - _miny) / div
         self.ad.moveto(_minx, _miny)
-        self.ad.pendown()
+        # self.ad.pendown()
+        self.draw_manual_circle((_minx, _miny), 0.04)
+                # self.ad.penup()
         for i in range(1, div + 1):
             (i % 2) and self.ad.lineto(_minx + diffx * i, _maxy)
             not (i % 2) and self.ad.lineto(_minx + diffx * i, _miny)
         self.ad.penup()
         self.ad.moveto(0, 0)
+        '''
 
         # Draw random dots dist within bounding box to test id enough up/down
         n_dots = 10
@@ -197,9 +201,8 @@ class ProgrammaticSvgManipulator:
         disty = np.random.uniform(_miny, _maxy, size=(n_dots, 1))
 
         for i in range(n_dots):
-            self.ad.moveto(distx[i][0], disty[i][0])
-            self.ad.pendown()
-            self.ad.penup()
+            # self.ad.moveto(distx[i][0], disty[i][0])
+            self.draw_manual_circle((distx[i][0], disty[i][0]), 0.04)
 
         self.ad.moveto(0, 0)
         self.ad.disconnect()
@@ -220,10 +223,16 @@ class ProgrammaticSvgManipulator:
         )
         self.ad.moveto(_minx, _miny)
         self.ad.pendown()
-        self.ad.lineto(_minx, _maxy)
+        self.ad.penup()
+        self.ad.moveto(_minx, _maxy)
+        self.ad.pendown()
+        self.ad.penup()
         self.ad.lineto(_maxx, _maxy)
-        self.ad.lineto(_maxx, _miny)
-        self.ad.lineto(_minx, _miny)
+        self.ad.moveto(_maxx, _miny)
+        self.ad.pendown()
+        self.ad.penup()
+        self.ad.moveto(_minx, _miny)
+        self.ad.pendown()
         self.ad.penup()
         self.ad.moveto(0, 0)
         self.ad.disconnect()
@@ -251,11 +260,12 @@ class ProgrammaticSvgManipulator:
             # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[52220:]
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]>=0.73:
-                if xy[0]>=10.6:
+                if xy[0]<=18.4:
                     self.ad.moveto(xy[1], xy[0])
                     # self.ad.pendown()
                     self.draw_manual_circle(xy, of)
-                    # self.ad.penup()
+                    # print(f"xy[0]: {xy[0]}")
+                # self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()

@@ -30,7 +30,7 @@ aq_file = aq.aquatint()
 """
 
 # Hardcode file name if you are ready to plot and don't want to redo the above
-aq_file = "output/FINAL_DONT_OVERWRITE/18by24_prints/rocks_and_sea_crop_3/div_factor_10_point_size_0p3/aquatint_pixel_concat.csv"
+aq_file = "output/FINAL_DONT_OVERWRITE/18by24_prints/lop56011_crop5_v3/aquatint_pixel_concat.csv"
 
 # Aquatint file to axidraw
 psm = ProgrammaticSvgManipulator(aq_file)
