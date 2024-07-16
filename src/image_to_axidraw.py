@@ -5,7 +5,7 @@ from aquatint_classes.programmatic_svg import ProgrammaticSvgManipulator
 # Image to aquatint file
 n_aquatint_pixels = "MAX"
 aq = ProgrammaticAquatint(
-    "imgs/double2_v2.jpg",
+    "imgs/double2/double2_top.jpg",
     # "imgs/double_3.jpg",
     # "imgs/final/lop56011_crop7.jpg",
     "output",
