@@ -57,7 +57,7 @@ class ProgrammaticSvgManipulator:
         # Higher is smaller
         self.scalar = scalar
 
-        self.starting_origin = [0, 1]
+        self.starting_origin = [0, 2]
 
         # Load in file
         self.cls_log(self.filename)
@@ -94,9 +94,14 @@ class ProgrammaticSvgManipulator:
 
             # fine sharpie settings
             # self.ad.options.pen_pos_up = 65 #default 60
-            self.ad.options.pen_pos_up = 60 #default 60
-            self.ad.options.pen_pos_down = 40
+            # self.ad.options.pen_pos_up = 60 #default 60
+            self.ad.options.pen_pos_up = 50 #default 60
+            # self.ad.options.pen_pos_down = 40
+            self.ad.options.pen_pos_down = 39
             # self.ad.options.pen_pos_down = 38
+            # self.ad.options.pen_pos_down = 37
+            # self.ad.options.pen_pos_down = 36
+            # self.ad.options.pen_pos_down = 34
             # self.ad.options.pen_pos_down = 32
 
             
@@ -156,9 +161,9 @@ class ProgrammaticSvgManipulator:
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
                     [xy[1], xy[0]],
-                    [xy[1] + of, xy[0] + of],
-                    [xy[1] + of, xy[0]],
-                    [xy[1], xy[0] + of],
+                    # [xy[1] + of, xy[0] + of],
+                    # [xy[1] + of, xy[0]],
+                    # [xy[1], xy[0] + of],
                 ]
             )
             return
@@ -251,15 +256,15 @@ class ProgrammaticSvgManipulator:
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))[0:5000]
-            # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[52220:]
+            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
-                if xy[0]<=12 and xy[1]<=18:
-                    self.ad.moveto(xy[1], xy[0])
-                    # self.ad.pendown()
-                    self.draw_manual_circle(xy, of)
-                    # print(f"xy[0]: {xy[0]}")
-                    # self.ad.penup()
+                # if xy[0]<=12 and xy[1]<=18:
+                self.ad.moveto(xy[1], xy[0])
+                # self.ad.pendown()
+                self.draw_manual_circle(xy, of)
+                # print(f"xy[0]: {xy[0]}")
+                # self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()

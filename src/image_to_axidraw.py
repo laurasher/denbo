@@ -1,12 +1,12 @@
 import os
 from aquatint_classes.programmatic_aquatint import ProgrammaticAquatint
 from aquatint_classes.programmatic_svg import ProgrammaticSvgManipulator
-'''
+
 # Image to aquatint file
 n_aquatint_pixels = "MAX"
 aq = ProgrammaticAquatint(
     # "imgs/lopcrop4_and_rocks_and_sea_crop3_v2.jpg",
-    "imgs/double_v2.jpg",
+    "imgs/double1/double1_bottom.jpg",
     "output",
     n_aquatint_pixels=n_aquatint_pixels,
     # sample_rate=1.5,
@@ -30,19 +30,19 @@ aq = ProgrammaticAquatint(
     # plot_point_size=0.2,
 )
 aq_file = aq.aquatint()
-'''
+
 # Hardcode file name if you are ready to plot and don't want to redo the above
-aq_file = os.path.join(
-    "output",
-    "double_v2",
-    "div_factor_20_point_size_0p4",
-    "aquatint_pixel_concat.csv",
-)
+# aq_file = os.path.join(
+#     "output",
+#     "double_v2",
+#     "div_factor_20_point_size_0p4",
+#     "aquatint_pixel_concat.csv",
+# )
 
 # Aquatint file to axidraw
-psm = ProgrammaticSvgManipulator(aq_file, scalar=12.4)
+# psm = ProgrammaticSvgManipulator(aq_file, scalar=12.4)
 # psm.preview()
-psm.calc_xy_size()
+# psm.calc_xy_size()
 # psm.axidraw_xy_bounding_box()
 # psm.axidraw_xy_dots_inches()
 # del psm
