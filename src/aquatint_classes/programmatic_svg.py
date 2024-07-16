@@ -234,7 +234,8 @@ class ProgrammaticSvgManipulator:
         self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
         # of = 0.025
         # of = 0.01 # first baren test
-        of = 0.01
+        # of = 0.01
+        of = 0.04
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
