@@ -1,7 +1,7 @@
 from aquatint_classes.programmatic_aquatint import ProgrammaticAquatint
 from aquatint_classes.programmatic_svg import ProgrammaticSvgManipulator
 
-
+'''
 # Image to aquatint file
 n_aquatint_pixels = "MAX"
 aq = ProgrammaticAquatint(
@@ -29,15 +29,13 @@ aq = ProgrammaticAquatint(
     # plot_point_size=0.2,
 )
 aq_file = aq.aquatint()
-"""
+'''
 # Hardcode file name if you are ready to plot and don't want to redo the above
-aq_file = "output/double2_v2/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv"
+aq_file = "output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv"
 
 # Aquatint file to axidraw
 psm = ProgrammaticSvgManipulator(aq_file)
 psm.calc_xy_size()
 # psm.axidraw_xy_bounding_box()
 # psm.axidraw_calibrate()
-# psm.axidraw_xy_dots_inches()
-
-"""
+psm.axidraw_xy_dots_inches()

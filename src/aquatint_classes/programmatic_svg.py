@@ -49,7 +49,8 @@ class ProgrammaticSvgManipulator:
         self.MAX_Y = 23.39  # inches
 
         ### These are for 9x12 plates ###
-        self.scalar = 9.5
+        # self.scalar = 9.5
+        self.scalar = 12.4
         ###  ###
 
         self.starting_origin = [0, 3]

@@ -1,0 +1,2 @@
+Starting print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-16 15:30:27.743157
