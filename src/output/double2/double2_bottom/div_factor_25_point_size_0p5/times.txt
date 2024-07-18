@@ -1,2 +1,10 @@
 Starting print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
---- Start: 2024-07-16 15:30:27.743157
+--- Start: 2024-07-16 15:30:27.743157Starting print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-16 15:32:21.558180Starting print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-16 15:34:05.321884Starting print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-16 15:34:34.113162Starting print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-16 15:47:33.431957Starting print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-16 15:48:49.481050Starting print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-16 15:50:15.897150Starting print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-16 15:51:19.094232Finishing print for output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv
+--- End: 2024-07-17 06:14:57.019430

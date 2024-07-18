@@ -31,7 +31,8 @@ aq = ProgrammaticAquatint(
 aq_file = aq.aquatint()
 '''
 # Hardcode file name if you are ready to plot and don't want to redo the above
-aq_file = "output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv"
+# aq_file = "output/double2/double2_bottom/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv"
+aq_file = "output/double2/double2_top/div_factor_25_point_size_0p5/aquatint_pixel_concat.csv"
 
 # Aquatint file to axidraw
 psm = ProgrammaticSvgManipulator(aq_file)

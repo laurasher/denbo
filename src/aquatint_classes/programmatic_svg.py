@@ -94,8 +94,9 @@ class ProgrammaticSvgManipulator:
 
             # paint marker for acetate positive settings
             self.ad.options.speed_pendown = 55  # default 25
-            self.ad.options.pen_pos_up = 100
-            self.ad.options.pen_pos_down = 40
+            self.ad.options.pen_pos_up = 65
+            # self.ad.options.pen_pos_down = 40
+            self.ad.options.pen_pos_down = 37
 
             self.ad.update()
         except Exception as e:
@@ -147,12 +148,24 @@ class ProgrammaticSvgManipulator:
             # self.ad.moveto(xy[1], xy[0])
             self.ad.draw_path(
                 [
+                    [xy[1], xy[0]],                    
                     [xy[1] + of, xy[0]],
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
                     [xy[1], xy[0]],
+                    # [xy[1] + of, xy[0] + of],
+                    # [xy[1] + of, xy[0]],
+                    # [xy[1], xy[0] + of],
                 ]
             )
+            # self.ad.draw_path(
+            #     [
+            #         [xy[1] + of, xy[0]],
+            #         [xy[1] + of, xy[0] + of],
+            #         [xy[1], xy[0] + of],
+            #         [xy[1], xy[0]],
+            #     ]
+            # )
             return
         except Exception as e:
             self.cls_log(f"Unable to draw_manual_circle {e}")
