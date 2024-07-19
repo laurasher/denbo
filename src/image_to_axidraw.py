@@ -5,8 +5,8 @@ from aquatint_classes.programmatic_svg import ProgrammaticSvgManipulator
 # Image to aquatint file
 n_aquatint_pixels = "MAX"
 aq = ProgrammaticAquatint(
-    # "imgs/lopcrop4_and_rocks_and_sea_crop3_v2.jpg",
-    "imgs/double1/double1_bottom.jpg",
+    "imgs/lopcrop4_and_rocks_and_sea_crop3_v2.jpg",
+    # "imgs/double1/double1_bottom.jpg",
     "output",
     n_aquatint_pixels=n_aquatint_pixels,
     # sample_rate=1.5,
