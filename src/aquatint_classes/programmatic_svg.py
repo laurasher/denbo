@@ -56,7 +56,7 @@ class ProgrammaticSvgManipulator:
         self.scalar = 9.1
         ###  ###
 
-        self.starting_origin = [0, 3]
+        self.starting_origin = [0, 1]
 
         # Load in file
         self.cls_log(self.filename)
@@ -96,11 +96,11 @@ class ProgrammaticSvgManipulator:
             # self.ad.options.pen_pos_down = 40
 
             # paint marker for acetate positive settings
-            self.ad.options.speed_pendown = 55  # default 25
+            self.ad.options.speed_pendown = 100  # default 25
             # self.ad.options.speed_pendown = 100  # default 25
             # self.ad.options.speed_penup = 100
-            self.ad.options.pen_pos_up = 100
-            self.ad.options.pen_pos_down = 40
+            self.ad.options.pen_pos_up = 55
+            self.ad.options.pen_pos_down = 26
 
             self.ad.update()
         except Exception as e:
@@ -152,6 +152,7 @@ class ProgrammaticSvgManipulator:
             # self.ad.moveto(xy[1], xy[0])
             self.ad.draw_path(
                 [
+                    [xy[1], xy[0]],                    
                     [xy[1] + of, xy[0]],
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
@@ -230,7 +231,7 @@ class ProgrammaticSvgManipulator:
     def axidraw_xy_dots_inches(self):
         self.initialize_ad()
         self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
-        of = 0.025
+        of = 0.04
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
@@ -238,9 +239,9 @@ class ProgrammaticSvgManipulator:
             # offset_xy = self.add_current_pos_to_path(xy_current_pos)
             for ii, xy in enumerate(offset_xy):
                 self.ad.moveto(xy[1], xy[0])
-                self.ad.pendown()
-                # self.draw_manual_circle(xy, of)
-                self.ad.penup()
+                # self.ad.pendown()
+                self.draw_manual_circle(xy, of)
+                # self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()
