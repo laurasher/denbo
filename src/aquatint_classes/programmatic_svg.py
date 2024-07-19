@@ -1,8 +1,13 @@
 import pandas as pd
 import numpy as np
 import json
+import datetime
 from pyaxidraw import axidraw
 
+from PIL import Image, ImageOps
+import sys, os
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 class ProgrammaticSvgManipulator:
     """
@@ -29,11 +34,13 @@ class ProgrammaticSvgManipulator:
     - svg.path library
     """
 
-    def __init__(self, filename):
+    def __init__(self, filename, scalar, yoffset=0, xoffset=0):
         self.filename = filename
         self.xml = ""
         self.dpath = ""
         self.xy = []
+        self.xoffset = xoffset
+        self.yoffset = yoffset
         self.ad = axidraw.AxiDraw()
         self.units = 0  # 0 = inches, 1 = cm, 2 = mm
         self.units_map = {
@@ -46,15 +53,9 @@ class ProgrammaticSvgManipulator:
         # Usable pen travel (inches): 34.02 × 23.39 inches.
         self.MAX_X = 34.02  # inches
         self.MAX_Y = 23.39  # inches
-        ### These 3 were for 4 proofs on paper ###
-        # self.scalar = 4.8
-        # self.scalar = 6.4 #higher is smaller scale
-        # self.scalar = 7.6 #higher is smaller scale
-        ### These 3 were for 4 proofs on paper ###
 
-        ### These are experiments for 9x12 plates ###
-        self.scalar = 9.1
-        ###  ###
+        # Higher is smaller
+        self.scalar = scalar
 
         self.starting_origin = [0, 1]
 
@@ -62,6 +63,7 @@ class ProgrammaticSvgManipulator:
         self.cls_log(self.filename)
         if self.filename.split(".")[1] == "csv":
             self.cls_log("Loading aquatint points from csv...")
+            self.df = pd.read_csv(self.filename)
             self.xy = json.loads(
                 (
                     pd.read_csv(self.filename)[["x_val", "y_val"]].to_json(
@@ -86,19 +88,9 @@ class ProgrammaticSvgManipulator:
             self.ad.connect()
             self.ad.options.model = 5
             self.ad.options.units = self.units
-            # fine sharpie settings
-            # self.ad.options.pen_pos_up = 65 #default 60
-            # self.ad.options.pen_pos_down = 5 #default 40
 
-            # xl sharpie settings, sharpie sitting on cap ledge
-            # self.ad.options.speed_pendown = 55  # default 25
-            # self.ad.options.pen_pos_up = 100
-            # self.ad.options.pen_pos_down = 40
-
-            # paint marker for acetate positive settings
+            self.ad.options.speed_penup = 110  # default 25
             self.ad.options.speed_pendown = 100  # default 25
-            # self.ad.options.speed_pendown = 100  # default 25
-            # self.ad.options.speed_penup = 100
             self.ad.options.pen_pos_up = 55
             self.ad.options.pen_pos_down = 26
 
@@ -157,6 +149,9 @@ class ProgrammaticSvgManipulator:
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
                     [xy[1], xy[0]],
+                    # [xy[1] + of, xy[0] + of],
+                    # [xy[1] + of, xy[0]],
+                    # [xy[1], xy[0] + of],
                 ]
             )
             return
@@ -166,7 +161,7 @@ class ProgrammaticSvgManipulator:
 
     def axidraw_calibrate(self):
         self.initialize_ad()
-        self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
+        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
         xy_current_pos = self.ad.current_pos()
         offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
         _maxx = max([_x[1] for _x in offset_xy])
@@ -174,17 +169,21 @@ class ProgrammaticSvgManipulator:
         _maxy = max([_x[0] for _x in offset_xy])
         _miny = min([_x[0] for _x in offset_xy])
 
+        '''
         # Divide edges into divs, draw criss cross to test arm height
         div = 8
         diffx = (_maxx - _minx) / div
         diffy = (_maxy - _miny) / div
         self.ad.moveto(_minx, _miny)
-        self.ad.pendown()
+        # self.ad.pendown()
+        self.draw_manual_circle((_minx, _miny), 0.04)
+                # self.ad.penup()
         for i in range(1, div + 1):
             (i % 2) and self.ad.lineto(_minx + diffx * i, _maxy)
             not (i % 2) and self.ad.lineto(_minx + diffx * i, _miny)
         self.ad.penup()
         self.ad.moveto(0, 0)
+        '''
 
         # Draw random dots dist within bounding box to test id enough up/down
         n_dots = 10
@@ -196,9 +195,8 @@ class ProgrammaticSvgManipulator:
         disty = np.random.uniform(_miny, _maxy, size=(n_dots, 1))
 
         for i in range(n_dots):
-            self.ad.moveto(distx[i][0], disty[i][0])
-            self.ad.pendown()
-            self.ad.penup()
+            # self.ad.moveto(distx[i][0], disty[i][0])
+            self.draw_manual_circle((distx[i][0], disty[i][0]), 0.04)
 
         self.ad.moveto(0, 0)
         self.ad.disconnect()
@@ -207,7 +205,7 @@ class ProgrammaticSvgManipulator:
     def axidraw_xy_bounding_box(self):
         self.initialize_ad()
         # Move down 3 inches
-        self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
+        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
         xy_current_pos = self.ad.current_pos()
         offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
         _maxx = max([_x[1] for _x in offset_xy])
@@ -229,18 +227,31 @@ class ProgrammaticSvgManipulator:
         return
 
     def axidraw_xy_dots_inches(self):
+        fname = f'{self.filename.replace("aquatint_pixel_concat.csv", "")}times.txt'
+
+        self.cls_log(f"Writing start time to {fname}: {datetime.datetime.now()}")
+        f = open(fname, "a")
+        f.write(f"Starting print for {self.filename}")
+        f.write(f"\n--- Start: {datetime.datetime.now()}")
+        f.close()
+
         self.initialize_ad()
-        self.ad.moveto(self.starting_origin[0], self.starting_origin[1])
+        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
+        # of = 0.025
+        # of = 0.01 # first baren test
         of = 0.04
+        # of = 0.03
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
             offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            # offset_xy = self.add_current_pos_to_path(xy_current_pos)
+            # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
+                # if xy[0]<=12 and xy[1]<=18:
                 self.ad.moveto(xy[1], xy[0])
                 # self.ad.pendown()
                 self.draw_manual_circle(xy, of)
+                # print(f"xy[0]: {xy[0]}")
                 # self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
@@ -254,6 +265,30 @@ class ProgrammaticSvgManipulator:
         # Move home when finished
         self.ad.moveto(0, 0)
         self.ad.disconnect()
+
+        self.cls_log(f"Writing end time to {fname}: {datetime.datetime.now()}")
+        f = open(fname, "a")
+        f.write(f"Finishing print for {self.filename}")
+        f.write(f"\n--- End: {datetime.datetime.now()}")
+        f.close()
+
+        return
+
+    def preview(self, size=0.2):
+        fig = plt.figure()
+        ax = fig.add_subplot()
+        ax.invert_yaxis()
+        ax.invert_xaxis()
+        plt.scatter(self.df["x_val"], self.df["y_val"], s=size, linewidths=0, color="black")
+        plt.scatter(min(self.df["x_val"]), min(self.df["y_val"]), s=size*100, linewidths=0, color="red")
+        print(min(self.df["x_val"]), min(self.df["y_val"]))
+        # plt.title(title)
+        fig.tight_layout()
+
+        # square plot
+        ax.set_aspect("equal", adjustable="box")
+        plt.show()
+        fig.clf()
         return
 
     def axidraw_xy_path(self):
