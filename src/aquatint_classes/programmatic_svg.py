@@ -150,9 +150,9 @@ class ProgrammaticSvgManipulator:
             self.ad.draw_path(
                 [
                     [xy[1], xy[0]],                    
-                    [xy[1] + of, xy[0]],
-                    [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
+                    [xy[1] + of, xy[0] + of],
+                    [xy[1] + of, xy[0]],
                     [xy[1], xy[0]],
                 ]
             )
