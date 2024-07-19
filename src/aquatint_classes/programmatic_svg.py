@@ -87,27 +87,19 @@ class ProgrammaticSvgManipulator:
         self.cls_log(f"Total points to plot {len(self.xy)}")
 
     def initialize_ad(self):
-        # Initialize AxiDraw
-        self.ad.interactive()
-        try:
-            self.ad.connect()
-            self.ad.options.model = 5
-            self.ad.options.units = self.units
-            # fine sharpie settings
-            # self.ad.options.pen_pos_up = 65 #default 60
-            # self.ad.options.pen_pos_down = 5 #default 40
+            # Initialize AxiDraw
+            self.ad.interactive()
+            try:
+                self.ad.connect()
+                self.ad.options.model = 5
+                self.ad.options.units = self.units
 
-            # xl sharpie settings, sharpie sitting on cap ledge
-            # self.ad.options.speed_pendown = 55  # default 25
-            # self.ad.options.pen_pos_up = 100
-            # self.ad.options.pen_pos_down = 40
-
-            # paint marker for acetate positive settings
-            self.ad.options.speed_pendown = 55  # default 25
-            self.ad.options.pen_pos_up = 100
-            self.ad.options.pen_pos_down = 40
-
-            self.ad.update()
+                self.ad.options.speed_penup = 110
+                self.ad.options.speed_pendown = 100
+                self.ad.options.pen_pos_up = 34
+                self.ad.options.pen_pos_down = 14
+                # self.ad.options.pen_pos_down = 15 # sharpie wirh ridge resting on lower botttom of pen holder
+                self.ad.update()
         except Exception as e:
             self.cls_log(f"Could not connect to AxiDraw: {e}")
 
