@@ -91,7 +91,7 @@ class ProgrammaticSvgManipulator:
 
             self.ad.options.speed_penup = 110  # default 25
             self.ad.options.speed_pendown = 100  # default 25
-            self.ad.options.pen_pos_up = 55
+            self.ad.options.pen_pos_up = 40
             self.ad.options.pen_pos_down = 26
 
             self.ad.update()
@@ -144,10 +144,10 @@ class ProgrammaticSvgManipulator:
             # self.ad.moveto(xy[1], xy[0])
             self.ad.draw_path(
                 [
-                    [xy[1], xy[0]],                    
-                    [xy[1] + of, xy[0]],
-                    [xy[1] + of, xy[0] + of],
+                    [xy[1], xy[0]],
                     [xy[1], xy[0] + of],
+                    [xy[1] + of, xy[0] + of],
+                    [xy[1] + of, xy[0]],
                     [xy[1], xy[0]],
                     # [xy[1] + of, xy[0] + of],
                     # [xy[1] + of, xy[0]],
@@ -244,8 +244,8 @@ class ProgrammaticSvgManipulator:
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
+            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[44500:]
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]<=12 and xy[1]<=18:
                 self.ad.moveto(xy[1], xy[0])

@@ -1,0 +1,28 @@
+Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 12:23:11.260713Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 12:26:33.562086Finishing print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- End: 2024-07-19 12:26:45.392669Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 12:26:55.765177Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 12:28:00.523919Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 12:28:36.414442Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 12:29:07.039619Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 12:30:05.884473Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 12:31:41.779109Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 14:57:52.034614Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 14:58:34.561814Finishing print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- End: 2024-07-19 14:58:38.569964Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 14:58:46.534589Finishing print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- End: 2024-07-19 14:58:50.583895Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 14:59:11.707172Finishing print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- End: 2024-07-19 14:59:22.105717Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 14:59:27.535147Finishing print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- End: 2024-07-19 14:59:37.930276Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 14:59:56.841447Finishing print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- End: 2024-07-19 15:00:07.040360Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 15:00:16.889198Finishing print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- End: 2024-07-19 15:00:27.189573Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 15:00:47.585747Finishing print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- End: 2024-07-19 15:00:57.780759Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 15:01:39.608547Starting print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 22:42:43.227235Finishing print for output/rocks_and_sea_crop_2/div_factor_20_point_size_0p6/aquatint_pixel_concat.csv
+--- End: 2024-07-20 02:40:23.825311
