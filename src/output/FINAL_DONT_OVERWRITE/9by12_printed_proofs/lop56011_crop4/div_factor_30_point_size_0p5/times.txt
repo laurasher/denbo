@@ -2,4 +2,12 @@ Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_cro
 --- Start: 2024-07-10 15:16:07.214194Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
 --- Start: 2024-07-10 15:17:00.276688Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
 --- Start: 2024-07-10 15:35:35.816511Finishing print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
---- End: 2024-07-11 05:12:05.880348
+--- End: 2024-07-11 05:12:05.880348Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 17:46:03.490491Finishing print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- End: 2024-07-19 17:46:11.479570Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 17:48:43.339409Finishing print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- End: 2024-07-19 17:48:51.348439Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 17:49:01.236537Finishing print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- End: 2024-07-19 17:49:09.241714Starting print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- Start: 2024-07-19 17:50:32.218492Finishing print for output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/lop56011_crop4/div_factor_30_point_size_0p5/aquatint_pixel_concat.csv
+--- End: 2024-07-20 05:30:52.501809
