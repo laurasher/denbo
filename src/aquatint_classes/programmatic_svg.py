@@ -57,7 +57,7 @@ class ProgrammaticSvgManipulator:
         # Higher is smaller
         self.scalar = scalar
 
-        self.starting_origin = [0, 1]
+        self.starting_origin = [0, 0.75]
 
         # Load in file
         self.cls_log(self.filename)
@@ -92,7 +92,7 @@ class ProgrammaticSvgManipulator:
             self.ad.options.speed_penup = 110  # default 25
             self.ad.options.speed_pendown = 100  # default 25
             self.ad.options.pen_pos_up = 40
-            self.ad.options.pen_pos_down = 26
+            self.ad.options.pen_pos_down = 24
 
             self.ad.update()
         except Exception as e:
@@ -245,14 +245,15 @@ class ProgrammaticSvgManipulator:
         try:
             xy_current_pos = self.ad.current_pos()
             # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[44500:]
+            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[8300:9300]
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]<=12 and xy[1]<=18:
-                self.ad.moveto(xy[1], xy[0])
-                # self.ad.pendown()
-                self.draw_manual_circle(xy, of)
-                # print(f"xy[0]: {xy[0]}")
-                # self.ad.penup()
+                print(f"xy[0]: {xy[0]}")
+                if xy[0] <= 1.5:
+                    self.ad.moveto(xy[1], xy[0])
+                    # self.ad.pendown()
+                    self.draw_manual_circle(xy, of)
+                    # self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()

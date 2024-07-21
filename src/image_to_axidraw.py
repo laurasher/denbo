@@ -31,16 +31,17 @@ aq = ProgrammaticAquatint(
 aq_file = aq.aquatint()
 '''
 # Hardcode file name if you are ready to plot and don't want to redo the above
-aq_file = os.path.join(
-    "output",
-    "rocks_and_sea_crop_2",
-    # "div_factor_10_point_size_0p3",
-    "div_factor_20_point_size_0p6",
-    "aquatint_pixel_concat.csv",
-)
+# aq_file = os.path.join(
+#     "output",
+#     "rocks_and_sea_crop_2",
+#     # "div_factor_10_point_size_0p3",
+#     "div_factor_20_point_size_0p6",
+#     "aquatint_pixel_concat.csv",
+# )
+aq_file = "output/FINAL_DONT_OVERWRITE/9by12_printed_proofs/rocks_and_sea_crop_3_v2/div_factor_15_point_size_0p5/aquatint_pixel_concat.csv"
 
 # Aquatint file to axidraw
-psm = ProgrammaticSvgManipulator(aq_file, scalar=9.1)
+psm = ProgrammaticSvgManipulator(aq_file, scalar=9.5)
 # psm.preview()
 psm.calc_xy_size()
 # psm.axidraw_xy_bounding_box()
