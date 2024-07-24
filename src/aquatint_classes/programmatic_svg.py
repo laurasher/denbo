@@ -245,15 +245,14 @@ class ProgrammaticSvgManipulator:
         try:
             xy_current_pos = self.ad.current_pos()
             # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[8300:9300]
+            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]<=12 and xy[1]<=18:
-                print(f"xy[0]: {xy[0]}")
-                if xy[0] <= 1.5:
-                    self.ad.moveto(xy[1], xy[0])
-                    # self.ad.pendown()
-                    self.draw_manual_circle(xy, of)
-                    # self.ad.penup()
+                # print(f"xy[0]: {xy[0]}")
+                self.ad.moveto(xy[1], xy[0])
+                # self.ad.pendown()
+                self.draw_manual_circle(xy, of)
+                # self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()
