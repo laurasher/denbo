@@ -292,12 +292,12 @@ class ProgrammaticSvgManipulator:
 
         return
 
-    def preview(self, size=0.2):
+    def preview(self, size=0.8):
         fig = plt.figure()
         ax = fig.add_subplot()
         ax.invert_yaxis()
         ax.invert_xaxis()
-        plt.scatter(self.df["x_val"], self.df["y_val"], s=size, linewidths=0, color="black")
+        plt.scatter(self.df["x_val"], self.df["y_val"], s=size, marker="s", linewidths=size/2, color="white", edgecolors="black")
         plt.scatter(min(self.df["x_val"]), min(self.df["y_val"]), s=size*100, linewidths=0, color="red")
         print(min(self.df["x_val"]), min(self.df["y_val"]))
         # plt.title(title)
