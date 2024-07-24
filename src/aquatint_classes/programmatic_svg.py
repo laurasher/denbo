@@ -104,8 +104,6 @@ class ProgrammaticSvgManipulator:
             # self.ad.options.pen_pos_down = 34
             # self.ad.options.pen_pos_down = 32
 
-            
-
             self.ad.update()
         except Exception as e:
             self.cls_log(f"Could not connect to AxiDraw: {e}")
@@ -166,6 +164,14 @@ class ProgrammaticSvgManipulator:
                     # [xy[1], xy[0] + of],
                 ]
             )
+            # self.ad.draw_path(
+            #     [
+            #         [xy[1] + of, xy[0]],
+            #         [xy[1] + of, xy[0] + of],
+            #         [xy[1], xy[0] + of],
+            #         [xy[1], xy[0]],
+            #     ]
+            # )
             return
         except Exception as e:
             self.cls_log(f"Unable to draw_manual_circle {e}")
