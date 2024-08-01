@@ -57,7 +57,7 @@ class ProgrammaticSvgManipulator:
         # Higher is smaller
         self.scalar = scalar
 
-        self.starting_origin = [0, 2]
+        self.starting_origin = [0, 1]
 
         # Load in file
         self.cls_log(self.filename)
@@ -89,23 +89,11 @@ class ProgrammaticSvgManipulator:
             self.ad.options.model = 5
             self.ad.options.units = self.units
 
-            self.ad.options.speed_pendown = 110  # default 25
-            self.ad.options.speed_penup = 110  # default 25
-
-            # fine sharpie settings
-            # self.ad.options.pen_pos_up = 65 #default 60
-            # self.ad.options.pen_pos_up = 60 #default 60
-            self.ad.options.pen_pos_up = 50 #default 60
-            # self.ad.options.pen_pos_down = 40
-            self.ad.options.pen_pos_down = 39
-            # self.ad.options.pen_pos_down = 38
-            # self.ad.options.pen_pos_down = 37
-            # self.ad.options.pen_pos_down = 36
-            # self.ad.options.pen_pos_down = 34
-            # self.ad.options.pen_pos_down = 32
-
-            
-
+            self.ad.options.speed_penup = 110
+            self.ad.options.speed_pendown = 100
+            self.ad.options.pen_pos_up = 34
+            self.ad.options.pen_pos_down = 14
+            # self.ad.options.pen_pos_down = 15 # sharpie wirh ridge resting on lower botttom of pen holder
             self.ad.update()
         except Exception as e:
             self.cls_log(f"Could not connect to AxiDraw: {e}")
@@ -157,13 +145,10 @@ class ProgrammaticSvgManipulator:
             self.ad.draw_path(
                 [
                     [xy[1], xy[0]],                    
-                    [xy[1] + of, xy[0]],
-                    [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
+                    [xy[1] + of, xy[0] + of],
+                    [xy[1] + of, xy[0]],
                     [xy[1], xy[0]],
-                    # [xy[1] + of, xy[0] + of],
-                    # [xy[1] + of, xy[0]],
-                    # [xy[1], xy[0] + of],
                 ]
             )
             return
@@ -256,8 +241,8 @@ class ProgrammaticSvgManipulator:
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
+            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))[0:10] 
+            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[0:10] 
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]<=12 and xy[1]<=18:
                 self.ad.moveto(xy[1], xy[0])
