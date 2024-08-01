@@ -57,7 +57,7 @@ class ProgrammaticSvgManipulator:
         # Higher is smaller
         self.scalar = scalar
 
-        self.starting_origin = [0, 2]
+        self.starting_origin = [0, 0]
 
         # Load in file
         self.cls_log(self.filename)
@@ -95,14 +95,14 @@ class ProgrammaticSvgManipulator:
             # fine sharpie settings
             # self.ad.options.pen_pos_up = 65 #default 60
             # self.ad.options.pen_pos_up = 60 #default 60
-            self.ad.options.pen_pos_up = 50 #default 60
+            self.ad.options.pen_pos_up = 59 #default 60
             # self.ad.options.pen_pos_down = 40
-            self.ad.options.pen_pos_down = 39
+            # self.ad.options.pen_pos_down = 39
             # self.ad.options.pen_pos_down = 38
             # self.ad.options.pen_pos_down = 37
             # self.ad.options.pen_pos_down = 36
             # self.ad.options.pen_pos_down = 34
-            # self.ad.options.pen_pos_down = 32
+            self.ad.options.pen_pos_down = 40
 
             self.ad.update()
         except Exception as e:
@@ -146,12 +146,36 @@ class ProgrammaticSvgManipulator:
         self.cls_log(f"Total size in {self.units_map[self.units]} {_s}")
         return _s
 
+    def go_to_top_right(self):
+        self.initialize_ad()
+        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
+        xy_current_pos = self.ad.current_pos()
+        xy = list((self.add_current_pos_to_path(xy_current_pos)))
+        self.ad.moveto(xy[0][1], xy[0][0])
+        self.cls_log(f'{xy[0][1], xy[0][0]}')
+        self.ad.pendown()
+        input()
+        self.ad.penup()
+        self.ad.moveto(0, 0)
+        del xy
+        return
+    
+    def go_to_bottom_left(self):
+        self.initialize_ad()
+        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
+        xy_current_pos = self.ad.current_pos()
+        xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+        self.ad.moveto(xy[0][1], xy[0][0])
+        self.ad.pendown()
+        self.cls_log(f'{xy[0][1], xy[0][0]}')
+        input()
+        self.ad.penup()
+        self.ad.moveto(0, 0)
+        del xy
+        return
+    
     def draw_manual_circle(self, xy, of):
         try:
-            # self.ad.moveto(xy[1] + of, xy[0])
-            # self.ad.moveto(xy[1] + of, xy[0] + of)
-            # self.ad.moveto(xy[1], xy[0] + of)
-            # self.ad.moveto(xy[1], xy[0])
             self.ad.draw_path(
                 [
                     [xy[1], xy[0]],                    
@@ -159,19 +183,8 @@ class ProgrammaticSvgManipulator:
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
                     [xy[1], xy[0]],
-                    # [xy[1] + of, xy[0] + of],
-                    # [xy[1] + of, xy[0]],
-                    # [xy[1], xy[0] + of],
                 ]
             )
-            # self.ad.draw_path(
-            #     [
-            #         [xy[1] + of, xy[0]],
-            #         [xy[1] + of, xy[0] + of],
-            #         [xy[1], xy[0] + of],
-            #         [xy[1], xy[0]],
-            #     ]
-            # )
             return
         except Exception as e:
             self.cls_log(f"Unable to draw_manual_circle {e}")
@@ -262,7 +275,8 @@ class ProgrammaticSvgManipulator:
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))[(57500+68200+32300):]
             # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]<=12 and xy[1]<=18:

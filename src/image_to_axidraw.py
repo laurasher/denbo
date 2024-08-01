@@ -1,7 +1,7 @@
 import os
 from aquatint_classes.programmatic_aquatint import ProgrammaticAquatint
 from aquatint_classes.programmatic_svg import ProgrammaticSvgManipulator
-
+'''
 # Image to aquatint file
 n_aquatint_pixels = "MAX"
 aq = ProgrammaticAquatint(
@@ -29,8 +29,8 @@ aq = ProgrammaticAquatint(
     # plot_point_size=0.2,
 )
 aq_file = aq.aquatint()
-
 '''
+
 # Hardcode file name if you are ready to plot and don't want to redo the above
 aq_file = os.path.join(
     "output",
@@ -45,11 +45,27 @@ aq_file = os.path.join(
 #     "aquatint_pixel_concat.csv",
 # )
 
+import pandas as pd
+import json
+
+scalar = 12.8
+df = pd.read_csv(aq_file)
+df['x_val'] = df['x_val']/scalar
+df['y_val'] = df['y_val']/scalar
+
+# For AxiDraw SE/A3 working area is 11"x17"
+df = df.drop(df[df['x_val']>=11.5].index)
+df = df.drop(df[df['y_val']>=16.5].index)
+aq_file_trunc = f'{aq_file.split(".csv")[0]}_trunc_SEA3.csv'
+df.to_csv(aq_file_trunc)
+
 # Aquatint file to axidraw
-psm = ProgrammaticSvgManipulator(aq_file, scalar=12.4)
-psm.preview()
+psm = ProgrammaticSvgManipulator(aq_file_trunc, scalar=1)
+# psm.preview()
 psm.calc_xy_size()
+# psm.go_to_top_right()
+# psm.go_to_bottom_left()
 # psm.axidraw_xy_bounding_box()
 # psm.axidraw_calibrate()
-# psm.axidraw_xy_dots_inches()
-'''
+psm.axidraw_xy_dots_inches()
+

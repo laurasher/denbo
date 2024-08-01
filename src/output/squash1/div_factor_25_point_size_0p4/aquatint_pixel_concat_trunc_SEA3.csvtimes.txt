@@ -1,0 +1,8 @@
+Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
+--- Start: 2024-07-25 10:31:42.650525Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
+--- Start: 2024-07-25 10:32:49.104812Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
+--- Start: 2024-07-25 10:39:32.883847Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
+--- Start: 2024-07-25 21:22:22.924077Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
+--- Start: 2024-07-26 10:00:03.946817Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
+--- Start: 2024-07-26 20:32:26.649767Finishing print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
+--- End: 2024-07-26 22:04:58.117224
