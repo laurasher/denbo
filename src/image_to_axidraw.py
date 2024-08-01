@@ -41,10 +41,10 @@ aq_file = os.path.join(
 
 # Aquatint file to axidraw
 psm = ProgrammaticSvgManipulator(aq_file, scalar=12.4)
-# psm.preview()
-# psm.calc_xy_size()
+psm.preview()
+psm.calc_xy_size()
 # psm.axidraw_xy_bounding_box()
-psm.axidraw_xy_dots_inches()
+# psm.axidraw_xy_dots_inches()
 # del psm
 
 # # Add 9" offset to bottom file, then concat top and bottom files
