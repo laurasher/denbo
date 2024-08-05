@@ -281,10 +281,10 @@ class ProgrammaticSvgManipulator:
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]<=12 and xy[1]<=18:
                 self.ad.moveto(xy[1], xy[0])
-                # self.ad.pendown()
-                self.draw_manual_circle(xy, of)
+                self.ad.pendown()
+                # self.draw_manual_circle(xy, of)
                 # print(f"xy[0]: {xy[0]}")
-                # self.ad.penup()
+                self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()
@@ -306,12 +306,13 @@ class ProgrammaticSvgManipulator:
 
         return
 
-    def preview(self, size=0.8):
+    def preview(self, size=0.02):
         fig = plt.figure()
         ax = fig.add_subplot()
         ax.invert_yaxis()
         ax.invert_xaxis()
-        plt.scatter(self.df["x_val"], self.df["y_val"], s=size, marker="s", linewidths=size/2, color="white", edgecolors="black")
+        plt.scatter(self.df["x_val"], self.df["y_val"], s=size, color="black")
+        # plt.scatter(self.df["x_val"], self.df["y_val"], s=size, marker="s", linewidths=size/2, color="white", edgecolors="black")
         plt.scatter(min(self.df["x_val"]), min(self.df["y_val"]), s=size*100, linewidths=0, color="red")
         print(min(self.df["x_val"]), min(self.df["y_val"]))
         # plt.title(title)
