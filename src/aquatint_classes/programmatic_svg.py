@@ -1,3 +1,4 @@
+import random
 import pandas as pd
 import numpy as np
 import json
@@ -8,6 +9,7 @@ from PIL import Image, ImageOps
 import sys, os
 import seaborn as sns
 import matplotlib.pyplot as plt
+
 
 class ProgrammaticSvgManipulator:
     """
@@ -93,15 +95,7 @@ class ProgrammaticSvgManipulator:
             self.ad.options.speed_penup = 110  # default 25
 
             # fine sharpie settings
-            # self.ad.options.pen_pos_up = 65 #default 60
-            # self.ad.options.pen_pos_up = 60 #default 60
-            self.ad.options.pen_pos_up = 59 #default 60
-            # self.ad.options.pen_pos_down = 40
-            # self.ad.options.pen_pos_down = 39
-            # self.ad.options.pen_pos_down = 38
-            # self.ad.options.pen_pos_down = 37
-            # self.ad.options.pen_pos_down = 36
-            # self.ad.options.pen_pos_down = 34
+            self.ad.options.pen_pos_up = 59  # default 60
             self.ad.options.pen_pos_down = 40
 
             self.ad.update()
@@ -148,37 +142,43 @@ class ProgrammaticSvgManipulator:
 
     def go_to_top_right(self):
         self.initialize_ad()
-        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
+        self.ad.moveto(
+            self.starting_origin[0] + self.yoffset,
+            self.starting_origin[1] + self.xoffset,
+        )
         xy_current_pos = self.ad.current_pos()
         xy = list((self.add_current_pos_to_path(xy_current_pos)))
         self.ad.moveto(xy[0][1], xy[0][0])
-        self.cls_log(f'{xy[0][1], xy[0][0]}')
+        self.cls_log(f"{xy[0][1], xy[0][0]}")
         self.ad.pendown()
         input()
         self.ad.penup()
         self.ad.moveto(0, 0)
         del xy
         return
-    
+
     def go_to_bottom_left(self):
         self.initialize_ad()
-        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
+        self.ad.moveto(
+            self.starting_origin[0] + self.yoffset,
+            self.starting_origin[1] + self.xoffset,
+        )
         xy_current_pos = self.ad.current_pos()
         xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
         self.ad.moveto(xy[0][1], xy[0][0])
         self.ad.pendown()
-        self.cls_log(f'{xy[0][1], xy[0][0]}')
+        self.cls_log(f"{xy[0][1], xy[0][0]}")
         input()
         self.ad.penup()
         self.ad.moveto(0, 0)
         del xy
         return
-    
+
     def draw_manual_circle(self, xy, of):
         try:
             self.ad.draw_path(
                 [
-                    [xy[1], xy[0]],                    
+                    [xy[1], xy[0]],
                     [xy[1] + of, xy[0]],
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
@@ -192,7 +192,10 @@ class ProgrammaticSvgManipulator:
 
     def axidraw_calibrate(self):
         self.initialize_ad()
-        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
+        self.ad.moveto(
+            self.starting_origin[0] + self.yoffset,
+            self.starting_origin[1] + self.xoffset,
+        )
         xy_current_pos = self.ad.current_pos()
         offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
         _maxx = max([_x[1] for _x in offset_xy])
@@ -200,7 +203,7 @@ class ProgrammaticSvgManipulator:
         _maxy = max([_x[0] for _x in offset_xy])
         _miny = min([_x[0] for _x in offset_xy])
 
-        '''
+        """
         # Divide edges into divs, draw criss cross to test arm height
         div = 8
         diffx = (_maxx - _minx) / div
@@ -214,7 +217,7 @@ class ProgrammaticSvgManipulator:
             not (i % 2) and self.ad.lineto(_minx + diffx * i, _miny)
         self.ad.penup()
         self.ad.moveto(0, 0)
-        '''
+        """
 
         # Draw random dots dist within bounding box to test id enough up/down
         n_dots = 10
@@ -236,7 +239,10 @@ class ProgrammaticSvgManipulator:
     def axidraw_xy_bounding_box(self):
         self.initialize_ad()
         # Move down 3 inches
-        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
+        self.ad.moveto(
+            self.starting_origin[0] + self.yoffset,
+            self.starting_origin[1] + self.xoffset,
+        )
         xy_current_pos = self.ad.current_pos()
         offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
         _maxx = max([_x[1] for _x in offset_xy])
@@ -267,7 +273,10 @@ class ProgrammaticSvgManipulator:
         f.close()
 
         self.initialize_ad()
-        self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
+        self.ad.moveto(
+            self.starting_origin[0] + self.yoffset,
+            self.starting_origin[1] + self.xoffset,
+        )
         # of = 0.025
         # of = 0.01 # first baren test
         of = 0.04
@@ -276,7 +285,9 @@ class ProgrammaticSvgManipulator:
         try:
             xy_current_pos = self.ad.current_pos()
             # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))[(57500+68200+32300):]
+            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))[
+                (57500 + 68200 + 32300) :
+            ]
             # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]<=12 and xy[1]<=18:
@@ -313,7 +324,13 @@ class ProgrammaticSvgManipulator:
         ax.invert_xaxis()
         plt.scatter(self.df["x_val"], self.df["y_val"], s=size, color="black")
         # plt.scatter(self.df["x_val"], self.df["y_val"], s=size, marker="s", linewidths=size/2, color="white", edgecolors="black")
-        plt.scatter(min(self.df["x_val"]), min(self.df["y_val"]), s=size*100, linewidths=0, color="red")
+        plt.scatter(
+            min(self.df["x_val"]),
+            min(self.df["y_val"]),
+            s=size * 100,
+            linewidths=0,
+            color="red",
+        )
         print(min(self.df["x_val"]), min(self.df["y_val"]))
         # plt.title(title)
         fig.tight_layout()
@@ -373,3 +390,59 @@ class ProgrammaticSvgManipulator:
         self.ad.moveto(0, 0)
         self.ad.disconnect()
         return
+
+    def make_grid(self):
+        num_horizontal_lines = 10
+        num_vertical_lines = 6
+        _maxx = max([_x[1] for _x in self.xy])
+        _minx = min([_x[1] for _x in self.xy])
+        _maxy = max([_x[0] for _x in self.xy])
+        _miny = min([_x[0] for _x in self.xy])
+        self.cls_log(f"Max X: {_maxx}")
+        self.cls_log(f"Min X: {_minx}")
+        self.cls_log(f"Max Y: {_maxy}")
+        self.cls_log(f"Min Y: {_miny}")
+
+        x_step = (_maxx - _minx) / num_horizontal_lines
+        x_band_dict = {}
+        for i in range(num_horizontal_lines):
+            x_band_dict[i] = {
+                "band": i,
+                "min": _minx + i * x_step,
+                "max": _minx + i * x_step + x_step,
+            }
+        self.cls_log(x_band_dict)
+
+        y_step = (_maxy - _miny) / num_vertical_lines
+        y_band_dict = {}
+        for i in range(num_vertical_lines):
+            y_band_dict[i] = {
+                "band": i,
+                "min": _miny + i * y_step,
+                "max": _miny + i * y_step + y_step,
+            }
+        self.cls_log(y_band_dict)
+
+        fig = plt.figure()
+        ax = fig.add_subplot()
+        h_grid_lines = {}
+        for k in x_band_dict:
+            num_points_in_line = random.randint(34,46)
+            _band = x_band_dict[k]
+            # Downselect to values in this band
+            _xy = [_x for _x in self.xy
+                if (_x[1] < _band["max"] and _x[1] > _band["min"])]
+            _xy = list(sorted(random.sample(_xy, num_points_in_line)))
+            # Pick num_points_in_line number of members of values in this band
+            # _l = list(sorted(random.sample(_xy, num_points_in_line)))
+            # _y = list(sorted(random.choice(_xy, num_points_in_line)))
+            h_grid_lines[k] = {
+                "band" : k,
+                "x_val" : [_x[1] for _x in _xy],
+                "y_val" : [_x[0] for _x in _xy]
+            }
+            print(len(h_grid_lines[k]["x_val"]))
+            print(len(h_grid_lines[k]["y_val"]))
+            plt.plot(h_grid_lines[k]["y_val"], h_grid_lines[k]["x_val"], '--b')
+        self.cls_log(h_grid_lines)
+        plt.show()

@@ -62,10 +62,10 @@ df.to_csv(aq_file_trunc)
 # Aquatint file to axidraw
 psm = ProgrammaticSvgManipulator(aq_file_trunc, scalar=1)
 # psm.preview()
-psm.calc_xy_size()
+# psm.calc_xy_size()
 # psm.go_to_top_right()
 # psm.go_to_bottom_left()
 # psm.axidraw_xy_bounding_box()
 # psm.axidraw_calibrate()
 # psm.axidraw_xy_dots_inches()
-
+psm.make_grid()
