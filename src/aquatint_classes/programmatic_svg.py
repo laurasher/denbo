@@ -392,7 +392,7 @@ class ProgrammaticSvgManipulator:
         return
 
     def make_grid(self):
-        num_horizontal_lines = 10
+        num_horizontal_lines = 14
         num_vertical_lines = 6
         _maxx = max([_x[1] for _x in self.xy])
         _minx = min([_x[1] for _x in self.xy])
@@ -403,7 +403,7 @@ class ProgrammaticSvgManipulator:
         self.cls_log(f"Max Y: {_maxy}")
         self.cls_log(f"Min Y: {_miny}")
 
-        x_step = (_maxx - _minx) / num_horizontal_lines
+        x_step = ((_maxx - _minx) / num_horizontal_lines)
         x_band_dict = {}
         for i in range(num_horizontal_lines):
             x_band_dict[i] = {
@@ -427,22 +427,39 @@ class ProgrammaticSvgManipulator:
         ax = fig.add_subplot()
         h_grid_lines = {}
         for k in x_band_dict:
-            num_points_in_line = random.randint(34,46)
+            # num_points_in_line = random.randint(24,28)
+            num_points_in_line = 42
             _band = x_band_dict[k]
             # Downselect to values in this band
             _xy = [_x for _x in self.xy
-                if (_x[1] < _band["max"] and _x[1] > _band["min"])]
-            _xy = list(sorted(random.sample(_xy, num_points_in_line)))
+                if (_x[1] < _band["max"]-x_step/2.5 and _x[1] > _band["min"]+x_step/2.5)]
             # Pick num_points_in_line number of members of values in this band
-            # _l = list(sorted(random.sample(_xy, num_points_in_line)))
-            # _y = list(sorted(random.choice(_xy, num_points_in_line)))
+            _xy = list(sorted(random.sample(_xy, num_points_in_line)))
             h_grid_lines[k] = {
                 "band" : k,
                 "x_val" : [_x[1] for _x in _xy],
                 "y_val" : [_x[0] for _x in _xy]
             }
-            print(len(h_grid_lines[k]["x_val"]))
-            print(len(h_grid_lines[k]["y_val"]))
-            plt.plot(h_grid_lines[k]["y_val"], h_grid_lines[k]["x_val"], '--b')
-        self.cls_log(h_grid_lines)
+            plt.plot(h_grid_lines[k]["y_val"], h_grid_lines[k]["x_val"], '-k', lw=0.2)
+
+        v_grid_lines = {}
+        for k in y_band_dict:
+            # num_points_in_line = random.randint(24,28)
+            num_points_in_line = 42*2
+            _band = y_band_dict[k]
+            # Downselect to values in this band
+            _xy = [_x for _x in self.xy
+                if (_x[0] < _band["max"]-y_step/2.5 and _x[0] > _band["min"]+y_step/2.5)]
+            # Pick num_points_in_line number of members of values in this band
+            _xy = list(sorted(random.sample(_xy, num_points_in_line), key=lambda x: x[1]))
+            v_grid_lines[k] = {
+                "band" : k,
+                "x_val" : [_x[1] for _x in _xy],
+                "y_val" : [_x[0] for _x in _xy]
+            }
+            plt.plot(v_grid_lines[k]["y_val"], v_grid_lines[k]["x_val"], '-k', lw=0.2)
+
+        fig.tight_layout()
+        # square plot
+        ax.set_aspect("equal", adjustable="box")
         plt.show()
