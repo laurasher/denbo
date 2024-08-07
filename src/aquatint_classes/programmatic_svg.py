@@ -91,18 +91,8 @@ class ProgrammaticSvgManipulator:
 
             self.ad.options.speed_pendown = 110  # default 25
             self.ad.options.speed_penup = 110  # default 25
-
-            # fine sharpie settings
-            # self.ad.options.pen_pos_up = 65 #default 60
-            # self.ad.options.pen_pos_up = 60 #default 60
-            self.ad.options.pen_pos_up = 50 #default 60
-            # self.ad.options.pen_pos_down = 40
-            self.ad.options.pen_pos_down = 39
-            # self.ad.options.pen_pos_down = 38
-            # self.ad.options.pen_pos_down = 37
-            # self.ad.options.pen_pos_down = 36
-            # self.ad.options.pen_pos_down = 34
-            # self.ad.options.pen_pos_down = 32
+            self.ad.options.pen_pos_up = 40 #default 60
+            self.ad.options.pen_pos_down = 15
 
             self.ad.update()
         except Exception as e:
@@ -159,19 +149,8 @@ class ProgrammaticSvgManipulator:
                     [xy[1] + of, xy[0] + of],
                     [xy[1], xy[0] + of],
                     [xy[1], xy[0]],
-                    # [xy[1] + of, xy[0] + of],
-                    # [xy[1] + of, xy[0]],
-                    # [xy[1], xy[0] + of],
                 ]
             )
-            # self.ad.draw_path(
-            #     [
-            #         [xy[1] + of, xy[0]],
-            #         [xy[1] + of, xy[0] + of],
-            #         [xy[1], xy[0] + of],
-            #         [xy[1], xy[0]],
-            #     ]
-            # )
             return
         except Exception as e:
             self.cls_log(f"Unable to draw_manual_circle {e}")
@@ -255,15 +234,14 @@ class ProgrammaticSvgManipulator:
 
         self.initialize_ad()
         self.ad.moveto(self.starting_origin[0]+self.yoffset, self.starting_origin[1]+self.xoffset)
-        # of = 0.025
-        # of = 0.01 # first baren test
         of = 0.04
-        # of = 0.03
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
+            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[(2400+57900+30200+16700):(2400+57900+52700)]
+            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[(2400+57900+30200-1000):(2400+57900+30200)]
+            
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]<=12 and xy[1]<=18:
                 self.ad.moveto(xy[1], xy[0])
