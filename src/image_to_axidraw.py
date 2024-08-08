@@ -1,7 +1,10 @@
 import os
 from aquatint_classes.programmatic_aquatint import ProgrammaticAquatint
 from aquatint_classes.programmatic_svg import ProgrammaticSvgManipulator
-'''
+from aquatint_classes.aquatint_patch import AquatintPatch
+from aquatint_classes.patch_plot import PatchPlot
+
+"""
 # Image to aquatint file
 n_aquatint_pixels = "MAX"
 aq = ProgrammaticAquatint(
@@ -29,43 +32,73 @@ aq = ProgrammaticAquatint(
     # plot_point_size=0.2,
 )
 aq_file = aq.aquatint()
-'''
+"""
 
 # Hardcode file name if you are ready to plot and don't want to redo the above
-aq_file = os.path.join(
+aq_file_squash1 = os.path.join(
     "output",
     "squash1",
     "div_factor_25_point_size_0p4",
     "aquatint_pixel_concat.csv",
 )
-# aq_file = os.path.join(
-#     "output",
-#     "squash2",
-#     "div_factor_30_point_size_0p4",
-#     "aquatint_pixel_concat.csv",
-# )
-
-import pandas as pd
-import json
-
-scalar = 11.5
-df = pd.read_csv(aq_file)
-df['x_val'] = df['x_val']/scalar
-df['y_val'] = df['y_val']/scalar
-
-# For AxiDraw SE/A3 working area is 11"x17"
-df = df.drop(df[df['x_val']>=12].index)
-df = df.drop(df[df['y_val']>=18].index)
-aq_file_trunc = f'{aq_file.split(".csv")[0]}_trunc_SEA3.csv'
-df.to_csv(aq_file_trunc)
+aq_file = os.path.join(
+    "output",
+    "squash2",
+    "div_factor_30_point_size_0p4",
+    "aquatint_pixel_concat.csv",
+)
 
 # Aquatint file to axidraw
-psm = ProgrammaticSvgManipulator(aq_file_trunc, scalar=1)
+psm = ProgrammaticSvgManipulator(aq_file, scalar=11.5)
 # psm.preview()
-# psm.calc_xy_size()
+psm.calc_xy_size()
 # psm.go_to_top_right()
 # psm.go_to_bottom_left()
 # psm.axidraw_xy_bounding_box()
 # psm.axidraw_calibrate()
 # psm.axidraw_xy_dots_inches()
-psm.make_grid()
+
+psm_squash1 = ProgrammaticSvgManipulator(aq_file_squash1, scalar=11.5)
+
+# Patch workflow
+print_page_w = 12
+print_page_h = 18
+
+# ------------ Patch 1 ------------ #
+patch_pos_on_page = [12, 14]
+patch_pos_from_source = [1, 8] # [x_dim, y_dim] upper right point
+patch_w = 4
+patch_h = 2
+patch1 = AquatintPatch(
+    psm.get_xy(),
+    patch_pos_from_source,
+    patch_w,
+    patch_h,
+    patch_pos_on_page,
+    print_page_w,
+    print_page_h,
+)
+# patch1.preview()
+
+# ------------ Patch 2 ------------ #
+patch_pos_on_page = [8, 9]
+patch_pos_from_source = [3, 2] # [x_dim, y_dim] upper right point
+patch_w = 5
+patch_h = 10
+patch2 = AquatintPatch(
+    psm_squash1.get_xy(),
+    patch_pos_from_source,
+    patch_w,
+    patch_h,
+    patch_pos_on_page,
+    print_page_w,
+    print_page_h,
+)
+# patch2.preview()
+
+patch_plot = PatchPlot(
+    [patch1, patch2], 
+    print_page_w,
+    print_page_h
+)
+patch_plot.preview()

@@ -83,6 +83,9 @@ class ProgrammaticSvgManipulator:
         self.cls_log(f"Scaled MAX Y {max([_x[0] for _x in self.xy])}")
         self.cls_log(f"Total points to plot {len(self.xy)}")
 
+    def get_xy(self):
+        return self.xy
+
     def initialize_ad(self):
         # Initialize AxiDraw
         self.ad.interactive()
@@ -403,7 +406,7 @@ class ProgrammaticSvgManipulator:
         self.cls_log(f"Max Y: {_maxy}")
         self.cls_log(f"Min Y: {_miny}")
 
-        x_step = ((_maxx - _minx) / num_horizontal_lines)
+        x_step = (_maxx - _minx) / num_horizontal_lines
         x_band_dict = {}
         for i in range(num_horizontal_lines):
             x_band_dict[i] = {
@@ -431,33 +434,47 @@ class ProgrammaticSvgManipulator:
             num_points_in_line = 42
             _band = x_band_dict[k]
             # Downselect to values in this band
-            _xy = [_x for _x in self.xy
-                if (_x[1] < _band["max"]-x_step/2.5 and _x[1] > _band["min"]+x_step/2.5)]
+            _xy = [
+                _x
+                for _x in self.xy
+                if (
+                    _x[1] < _band["max"] - x_step / 2.5
+                    and _x[1] > _band["min"] + x_step / 2.5
+                )
+            ]
             # Pick num_points_in_line number of members of values in this band
             _xy = list(sorted(random.sample(_xy, num_points_in_line)))
             h_grid_lines[k] = {
-                "band" : k,
-                "x_val" : [_x[1] for _x in _xy],
-                "y_val" : [_x[0] for _x in _xy]
+                "band": k,
+                "x_val": [_x[1] for _x in _xy],
+                "y_val": [_x[0] for _x in _xy],
             }
-            plt.plot(h_grid_lines[k]["y_val"], h_grid_lines[k]["x_val"], '-k', lw=0.2)
+            plt.plot(h_grid_lines[k]["y_val"], h_grid_lines[k]["x_val"], "-k", lw=0.2)
 
         v_grid_lines = {}
         for k in y_band_dict:
             # num_points_in_line = random.randint(24,28)
-            num_points_in_line = 42*2
+            num_points_in_line = 42 * 2
             _band = y_band_dict[k]
             # Downselect to values in this band
-            _xy = [_x for _x in self.xy
-                if (_x[0] < _band["max"]-y_step/2.5 and _x[0] > _band["min"]+y_step/2.5)]
+            _xy = [
+                _x
+                for _x in self.xy
+                if (
+                    _x[0] < _band["max"] - y_step / 2.5
+                    and _x[0] > _band["min"] + y_step / 2.5
+                )
+            ]
             # Pick num_points_in_line number of members of values in this band
-            _xy = list(sorted(random.sample(_xy, num_points_in_line), key=lambda x: x[1]))
+            _xy = list(
+                sorted(random.sample(_xy, num_points_in_line), key=lambda x: x[1])
+            )
             v_grid_lines[k] = {
-                "band" : k,
-                "x_val" : [_x[1] for _x in _xy],
-                "y_val" : [_x[0] for _x in _xy]
+                "band": k,
+                "x_val": [_x[1] for _x in _xy],
+                "y_val": [_x[0] for _x in _xy],
             }
-            plt.plot(v_grid_lines[k]["y_val"], v_grid_lines[k]["x_val"], '-k', lw=0.2)
+            plt.plot(v_grid_lines[k]["y_val"], v_grid_lines[k]["x_val"], "-k", lw=0.2)
 
         fig.tight_layout()
         # square plot
