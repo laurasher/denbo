@@ -50,14 +50,14 @@ aq_file = os.path.join(
 
 # Aquatint file to axidraw
 psm = ProgrammaticSvgManipulator(aq_file, scalar=11.5)
-# psm.preview()
+psm.preview()
 psm.calc_xy_size()
 # psm.go_to_top_right()
 # psm.go_to_bottom_left()
 # psm.axidraw_xy_bounding_box()
 # psm.axidraw_calibrate()
 # psm.axidraw_xy_dots_inches()
-
+'''
 psm_squash1 = ProgrammaticSvgManipulator(aq_file_squash1, scalar=11.5)
 
 # Patch workflow
@@ -65,8 +65,8 @@ print_page_w = 12
 print_page_h = 18
 
 # ------------ Patch 1 ------------ #
-patch_pos_on_page = [12, 14]
-patch_pos_from_source = [1, 8] # [x_dim, y_dim] upper right point
+patch_pos_on_page = [6, 10] # [x_dim, y_dim] upper right point
+patch_pos_from_source = [11, 1]  # [x_dim, y_dim] upper right point
 patch_w = 4
 patch_h = 2
 patch1 = AquatintPatch(
@@ -81,8 +81,8 @@ patch1 = AquatintPatch(
 # patch1.preview()
 
 # ------------ Patch 2 ------------ #
-patch_pos_on_page = [8, 9]
-patch_pos_from_source = [3, 2] # [x_dim, y_dim] upper right point
+patch_pos_on_page = [3, 4] # [x_dim, y_dim] upper right point
+patch_pos_from_source = [3, 2]  # [x_dim, y_dim] upper right point
 patch_w = 5
 patch_h = 10
 patch2 = AquatintPatch(
@@ -96,9 +96,73 @@ patch2 = AquatintPatch(
 )
 # patch2.preview()
 
-patch_plot = PatchPlot(
-    [patch1, patch2], 
+# ------------ Patch 3 ------------ #
+patch_pos_on_page = [1, 13] # [x_dim, y_dim] upper right point
+patch_pos_from_source = [7, 10]  # [x_dim, y_dim] upper right point
+patch_w = 4
+patch_h = 8
+patch3 = AquatintPatch(
+    psm.get_xy(),
+    patch_pos_from_source,
+    patch_w,
+    patch_h,
+    patch_pos_on_page,
     print_page_w,
-    print_page_h
+    print_page_h,
 )
+
+# ------------ Patch 4 ------------ #
+patch_pos_on_page = [4, 1] # [x_dim, y_dim] upper right point
+patch_pos_from_source = [1, 3]  # [x_dim, y_dim] upper right point
+patch_w = 6
+patch_h = 8
+patch4 = AquatintPatch(
+    psm.get_xy(),
+    patch_pos_from_source,
+    patch_w,
+    patch_h,
+    patch_pos_on_page,
+    print_page_w,
+    print_page_h,
+)
+
+# ------------ Patch 5 ------------ #
+patch_pos_on_page = [0, 2] # [x_dim, y_dim] upper right point
+patch_pos_from_source = [8, 6]  # [x_dim, y_dim] upper right point
+patch_w = 5
+patch_h = 4
+patch5 = AquatintPatch(
+    psm.get_xy(),
+    patch_pos_from_source,
+    patch_w,
+    patch_h,
+    patch_pos_on_page,
+    print_page_w,
+    print_page_h,
+)
+
+# ------------ Patch 6 ------------ #
+patch_pos_on_page = [7, 11] # [x_dim, y_dim] upper right point
+patch_pos_from_source = [6, 1]  # [x_dim, y_dim] upper right point
+patch_w = 4
+patch_h = 5
+patch6 = AquatintPatch(
+    psm.get_xy(),
+    patch_pos_from_source,
+    patch_w,
+    patch_h,
+    patch_pos_on_page,
+    print_page_w,
+    print_page_h,
+)
+
+patch_plot = PatchPlot([
+                        patch1, 
+                        patch2, 
+                        patch3, 
+                        patch4, 
+                        patch5,
+                        patch6
+                        ], print_page_w, print_page_h)
 patch_plot.preview()
+'''

@@ -43,6 +43,10 @@ class AquatintPatch:
         self.print_page_h = print_page_h
         self.patch_xy = []
         self.df = pd.DataFrame()
+        self.maxx = 0
+        self.minx = 0
+        self.maxy = 0
+        self.miny = 0
 
         self.printing_origin = [0, 0]
 
@@ -53,19 +57,25 @@ class AquatintPatch:
             if (x >= self.patch_origin_x and x <= self.patch_origin_x + self.patch_h)
             and (y >= self.patch_origin_y and y <= self.patch_origin_y + self.patch_w)
         ]
+        self.maxx = max([_x[1] for _x in self.patch_xy])
+        self.minx = min([_x[1] for _x in self.patch_xy])
+        self.maxy = max([_x[0] for _x in self.patch_xy])
+        self.miny = min([_x[0] for _x in self.patch_xy])
+
+        # Then reposition patch to origin, then translate to yoffset, xoffset
+        self.patch_xy = [
+            [xy[0] - self.miny + self.xoffset, xy[1] - self.minx + self.yoffset]
+            for xy in self.patch_xy
+        ]
+
+        # Then translate to yoffset, xoffset
 
         self.df["x_val"] = [_p[1] for _p in self.patch_xy]
         self.df["y_val"] = [_p[0] for _p in self.patch_xy]
 
-        # Then reposition path to origin
-
-        # Then translate to yoffset, xoffset
-
-        # Scale xy coordinates to fit within axidraw's travel area
-
     def get_df(self):
         return self.df
-    
+
     def preview(self, size=0.02):
         fig = plt.figure()
         ax = fig.add_subplot()
