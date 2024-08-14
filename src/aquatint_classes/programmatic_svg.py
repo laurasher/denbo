@@ -320,22 +320,36 @@ class ProgrammaticSvgManipulator:
 
         return
 
-    def preview(self, size=0.02):
+    def preview(self, size=0.1):
         fig = plt.figure()
         ax = fig.add_subplot()
         ax.invert_yaxis()
         ax.invert_xaxis()
-        plt.scatter(self.df["x_val"], self.df["y_val"], s=size, color="black")
-        # plt.scatter(self.df["x_val"], self.df["y_val"], s=size, marker="s", linewidths=size/2, color="white", edgecolors="black")
-        plt.scatter(
-            min(self.df["x_val"]),
-            min(self.df["y_val"]),
-            s=size * 100,
-            linewidths=0,
-            color="red",
-        )
-        print(min(self.df["x_val"]), min(self.df["y_val"]))
-        # plt.title(title)
+        # plt.scatter(
+        #     self.df["x_val"], 
+        #     self.df["y_val"], 
+        #     s=size, 
+        #     color="black", 
+        #     edgecolor='black', 
+        #     marker='o'
+        # )
+        # plt.scatter(
+        #     min(self.df["x_val"]),
+        #     min(self.df["y_val"]),
+        #     s=size * 100,
+        #     linewidths=0,
+        #     color="red",
+        # )
+        for index, row in self.df.iterrows():
+            y_o = random.uniform(0, 2.5)
+            x_o = random.uniform(-0.25, 0.5)
+            plt.plot(
+                [row["x_val"], row["x_val"]+x_o], 
+                # [row["y_val"], row["y_val"]+y_o], 
+                [row["y_val"], row["y_val"]+y_o+(row["y_val"]*0.02)], 
+                linewidth=size*2, 
+                color="black", 
+            )
         fig.tight_layout()
 
         # square plot
