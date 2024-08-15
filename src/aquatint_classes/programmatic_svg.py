@@ -177,6 +177,24 @@ class ProgrammaticSvgManipulator:
         del xy
         return
 
+    def draw_random_line(self, xy, of):
+        y_o = random.uniform(0, 2.5)
+        x_o = random.uniform(-0.25, 0.5)
+        # plt.plot(
+        #     [row["x_val"], row["x_val"]+x_o], 
+        #     # [row["y_val"], row["y_val"]+y_o], 
+        #     [row["y_val"], row["y_val"]+y_o+(row["y_val"]*0.02)], 
+        #     linewidth=size*2, 
+        #     color="black", 
+        # )
+        self.ad.draw_path(
+            [
+                [xy[1], xy[0]],
+                [xy[1]+x_o, xy[0]+y_o+(xy[0]*0.02)],
+            ]
+        )
+        return
+    
     def draw_manual_circle(self, xy, of):
         try:
             self.ad.draw_path(
@@ -287,18 +305,14 @@ class ProgrammaticSvgManipulator:
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))[
-                (57500 + 68200 + 32300) :
-            ]
+            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
             # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
-                # if xy[0]<=12 and xy[1]<=18:
                 self.ad.moveto(xy[1], xy[0])
-                self.ad.pendown()
+                # self.ad.pendown()
                 # self.draw_manual_circle(xy, of)
-                # print(f"xy[0]: {xy[0]}")
-                self.ad.penup()
+                self.draw_random_line(xy, of)
+                # self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()
