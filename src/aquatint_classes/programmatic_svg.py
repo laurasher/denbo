@@ -59,7 +59,7 @@ class ProgrammaticSvgManipulator:
         # Higher is smaller
         self.scalar = scalar
 
-        self.starting_origin = [0, 0]
+        self.starting_origin = [2, 3]
 
         # Load in file
         self.cls_log(self.filename)
@@ -98,8 +98,9 @@ class ProgrammaticSvgManipulator:
             self.ad.options.speed_penup = 110  # default 25
 
             # fine sharpie settings
-            self.ad.options.pen_pos_up = 59  # default 60
-            self.ad.options.pen_pos_down = 40
+            self.ad.options.pen_pos_up = 50  # default 60
+            # self.ad.options.pen_pos_down = 40
+            self.ad.options.pen_pos_down = 20
 
             self.ad.update()
         except Exception as e:
@@ -178,7 +179,7 @@ class ProgrammaticSvgManipulator:
         return
 
     def draw_random_line(self, xy, of):
-        y_o = random.uniform(0, 2.5)
+        y_o = random.uniform(0, 1.5)
         x_o = random.uniform(-0.25, 0.5)
         # plt.plot(
         #     [row["x_val"], row["x_val"]+x_o], 
@@ -190,7 +191,7 @@ class ProgrammaticSvgManipulator:
         self.ad.draw_path(
             [
                 [xy[1], xy[0]],
-                [xy[1]+x_o, xy[0]+y_o+(xy[0]*0.02)],
+                [xy[1]+y_o+(xy[1]*0.02), xy[0]+x_o],
             ]
         )
         return
@@ -306,13 +307,14 @@ class ProgrammaticSvgManipulator:
         try:
             xy_current_pos = self.ad.current_pos()
             offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
+            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))[0:10]
             # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
                 self.ad.moveto(xy[1], xy[0])
-                # self.ad.pendown()
+                self.ad.pendown()
                 # self.draw_manual_circle(xy, of)
-                self.draw_random_line(xy, of)
-                # self.ad.penup()
+                # self.draw_random_line(xy, of)
+                self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()

@@ -1,0 +1,24 @@
+Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:17:14.844635Finishing print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- End: 2024-08-15 17:17:31.372987Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:18:05.662914Finishing print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- End: 2024-08-15 17:18:22.367735Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:18:38.117528Finishing print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- End: 2024-08-15 17:18:48.231482Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:19:39.715849Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:20:45.811554Finishing print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- End: 2024-08-15 17:23:50.793118Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:31:41.329663Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:32:15.830864Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:33:11.653778Finishing print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- End: 2024-08-15 17:34:30.572002Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:34:39.339284Finishing print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- End: 2024-08-15 17:36:13.821385Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:36:24.762549Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-15 17:36:45.637654Finishing print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- End: 2024-08-15 18:04:40.951442Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-16 11:08:32.368668Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-16 11:17:32.646292Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-16 11:17:58.393374Starting print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-16 11:22:31.356214Finishing print for output/squash2/div_factor_30_point_size_0p4/aquatint_pixel_concat.csv
+--- End: 2024-08-17 00:57:59.529932
