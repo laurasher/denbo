@@ -1,0 +1,2 @@
+Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-17 10:46:22.574473

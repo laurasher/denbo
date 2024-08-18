@@ -14,4 +14,5 @@ Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_co
 --- Start: 2024-08-07 23:20:30.977890Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
 --- Start: 2024-08-07 23:21:00.766908Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
 --- Start: 2024-08-07 23:21:58.931674Finishing print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
---- End: 2024-08-08 11:02:19.667988
+--- End: 2024-08-08 11:02:19.667988Starting print for output/squash1/div_factor_25_point_size_0p4/aquatint_pixel_concat_trunc_SEA3.csv
+--- Start: 2024-08-17 10:41:16.630534

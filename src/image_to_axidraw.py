@@ -48,21 +48,21 @@ aq_file = os.path.join(
 import pandas as pd
 import json
 
-scalar = 11.5
-df = pd.read_csv(aq_file)
-df['x_val'] = df['x_val']/scalar
-df['y_val'] = df['y_val']/scalar
+# scalar = 11.5
+# df = pd.read_csv(aq_file)
+# df['x_val'] = df['x_val']/scalar
+# df['y_val'] = df['y_val']/scalar
 
 # For AxiDraw SE/A3 working area is 11"x17"
-df = df.drop(df[df['x_val']>=12].index)
-df = df.drop(df[df['y_val']>=18].index)
-aq_file_trunc = f'{aq_file.split(".csv")[0]}_trunc_SEA3.csv'
-df.to_csv(aq_file_trunc)
+# df = df.drop(df[df['x_val']>=12].index)
+# df = df.drop(df[df['y_val']>=18].index)
+# aq_file_trunc = f'{aq_file.split(".csv")[0]}_trunc_SEA3.csv'
+# df.to_csv(aq_file_trunc)
 
 # Aquatint file to axidraw
-psm = ProgrammaticSvgManipulator(aq_file_trunc, scalar=1)
+psm = ProgrammaticSvgManipulator(aq_file, scalar=11.5)
 # psm.preview()
-# psm.calc_xy_size()
+psm.calc_xy_size()
 # psm.go_to_top_right()
 # psm.go_to_bottom_left()
 # psm.axidraw_xy_bounding_box()
