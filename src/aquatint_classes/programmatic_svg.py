@@ -339,21 +339,22 @@ class ProgrammaticSvgManipulator:
         ax = fig.add_subplot()
         ax.invert_yaxis()
         ax.invert_xaxis()
-        # plt.scatter(
-        #     self.df["x_val"], 
-        #     self.df["y_val"], 
-        #     s=size, 
-        #     color="black", 
-        #     edgecolor='black', 
-        #     marker='o'
-        # )
-        # plt.scatter(
-        #     min(self.df["x_val"]),
-        #     min(self.df["y_val"]),
-        #     s=size * 100,
-        #     linewidths=0,
-        #     color="red",
-        # )
+        plt.scatter(
+            self.df["x_val"], 
+            self.df["y_val"], 
+            s=size, 
+            color="black", 
+            edgecolor='black', 
+            marker='o'
+        )
+        plt.scatter(
+            min(self.df["x_val"]),
+            min(self.df["y_val"]),
+            s=size * 100,
+            linewidths=0,
+            color="red",
+        )
+        '''
         for index, row in self.df.iterrows():
             y_o = random.uniform(0, 2.5)
             x_o = random.uniform(-0.25, 0.5)
@@ -364,6 +365,7 @@ class ProgrammaticSvgManipulator:
                 linewidth=size*2, 
                 color="black", 
             )
+        '''
         fig.tight_layout()
 
         # square plot
