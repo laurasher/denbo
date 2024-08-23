@@ -98,9 +98,12 @@ class ProgrammaticSvgManipulator:
             self.ad.options.speed_penup = 110  # default 25
 
             # fine sharpie settings
-            self.ad.options.pen_pos_up = 50  # default 60
-            # self.ad.options.pen_pos_down = 40
-            self.ad.options.pen_pos_down = 20
+            # self.ad.options.pen_pos_up = 50  # default 60
+            # self.ad.options.pen_pos_down = 20
+
+            # fat sharpie settings
+            self.ad.options.pen_pos_up = 85  # default 60
+            self.ad.options.pen_pos_down = 35
 
             self.ad.update()
         except Exception as e:
