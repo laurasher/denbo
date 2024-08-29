@@ -98,8 +98,12 @@ class ProgrammaticSvgManipulator:
             self.ad.options.speed_penup = 110  # default 25
 
             # fine sharpie settings
-            self.ad.options.pen_pos_up = 59  # default 60
-            self.ad.options.pen_pos_down = 40
+            # self.ad.options.pen_pos_up = 59  # default 60
+            # self.ad.options.pen_pos_down = 40
+
+            # fat sharpie settings
+            self.ad.options.pen_pos_up = 85  # default 60
+            self.ad.options.pen_pos_down = 35
 
             self.ad.update()
         except Exception as e:
@@ -309,10 +313,10 @@ class ProgrammaticSvgManipulator:
             # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
                 self.ad.moveto(xy[1], xy[0])
-                # self.ad.pendown()
+                self.ad.pendown()
                 # self.draw_manual_circle(xy, of)
-                self.draw_random_line(xy, of)
-                # self.ad.penup()
+                # self.draw_random_line(xy, of)
+                self.ad.penup()
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()
