@@ -1,0 +1,5 @@
+Starting print for output/eggplant/eggplant_2/div_factor_15_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-23 13:41:45.995883Starting print for output/eggplant/eggplant_2/div_factor_15_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-23 13:42:21.410784Starting print for output/eggplant/eggplant_2/div_factor_15_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-08-23 13:47:56.897837Finishing print for output/eggplant/eggplant_2/div_factor_15_point_size_0p4/aquatint_pixel_concat.csv
+--- End: 2024-08-24 17:51:52.985649

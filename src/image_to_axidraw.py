@@ -45,7 +45,7 @@ aq_file = os.path.join(
 
 # Aquatint file to axidraw
 psm = ProgrammaticSvgManipulator(aq_file, scalar=11.5)
-psm.preview()
+# psm.preview()
 psm.calc_xy_size()
 # psm.go_to_top_right()
 # psm.go_to_bottom_left()
