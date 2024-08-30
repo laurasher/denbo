@@ -3,19 +3,20 @@ from aquatint_classes.programmatic_aquatint import ProgrammaticAquatint
 from aquatint_classes.programmatic_svg import ProgrammaticSvgManipulator
 from aquatint_classes.aquatint_patch import AquatintPatch
 from aquatint_classes.patch_plot import PatchPlot
-'''
+
 # Image to aquatint file
 n_aquatint_pixels = "MAX"
 aq = ProgrammaticAquatint(
-    "imgs/eggplant/eggplant_1.jpg",
+    "imgs/eggplant/eggplant_4.jpg",
     "output",
     n_aquatint_pixels=n_aquatint_pixels,
     # sample_rate=1.5,
     use_sampled_image=False,
     # use_sampled_image=True,
     # data_channel_division_factor=10,
-    data_channel_division_factor=15,
-    # data_channel_division_factor=25,
+    # data_channel_division_factor=15,
+    # data_channel_division_factor=20,
+    data_channel_division_factor=25,
     # data_channel_division_factor=1,
     # data_channel_division_factor=40,
     # data_channel_division_factor=50,
@@ -31,8 +32,8 @@ aq = ProgrammaticAquatint(
     # plot_point_size=0.2,
 )
 aq_file = aq.aquatint()
-'''
 
+'''
 # Hardcode file name if you are ready to plot and don't want to redo the above
 aq_file = os.path.join(
     "output",
@@ -51,6 +52,7 @@ psm.calc_xy_size()
 # psm.axidraw_xy_bounding_box()
 # psm.axidraw_calibrate()
 # psm.axidraw_xy_dots_inches()
+'''
 
 '''
 psm_squash1 = ProgrammaticSvgManipulator(aq_file_squash1, scalar=11.5)
