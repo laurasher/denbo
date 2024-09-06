@@ -15,8 +15,8 @@ aq = ProgrammaticAquatint(
     # use_sampled_image=True,
     # data_channel_division_factor=10,
     # data_channel_division_factor=15,
-    # data_channel_division_factor=20,
-    data_channel_division_factor=25,
+    data_channel_division_factor=20,
+    # data_channel_division_factor=25,
     # data_channel_division_factor=1,
     # data_channel_division_factor=40,
     # data_channel_division_factor=50,
@@ -33,15 +33,16 @@ aq = ProgrammaticAquatint(
 )
 aq_file = aq.aquatint()
 '''
-
 # Hardcode file name if you are ready to plot and don't want to redo the above
 aq_file = os.path.join(
     "output",
     "eggplant",
     "eggplant_4",
-    "div_factor_25_point_size_0p4",
+    # "div_factor_25_point_size_0p4",
+    "div_factor_20_point_size_0p4",
     "aquatint_pixel_concat.csv",
 )
+
 
 # Aquatint file to axidraw
 psm = ProgrammaticSvgManipulator(aq_file, scalar=10.7)
