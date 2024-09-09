@@ -59,7 +59,7 @@ class ProgrammaticSvgManipulator:
         # Higher is smaller
         self.scalar = scalar
 
-        self.starting_origin = [0, 0]
+        self.starting_origin = [0, 3]
 
         # Load in file
         self.cls_log(self.filename)
@@ -95,8 +95,8 @@ class ProgrammaticSvgManipulator:
             self.ad.options.speed_penup = 110  # default 25
 
             # fine sharpie settings
-            self.ad.options.pen_pos_up = 59  # default 60
-            self.ad.options.pen_pos_down = 40
+            self.ad.options.pen_pos_up = 85  # default 60
+            self.ad.options.pen_pos_down = 35
 
             self.ad.update()
         except Exception as e:
@@ -284,10 +284,7 @@ class ProgrammaticSvgManipulator:
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
-            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))[
-                (57500 + 68200 + 32300) :
-            ]
+            offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))
             # offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
                 # if xy[0]<=12 and xy[1]<=18:
