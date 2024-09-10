@@ -1,0 +1,2 @@
+Starting print for output/eggplant/eggplant_4/div_factor_20_point_size_0p4/aquatint_pixel_concat.csv
+--- Start: 2024-09-06 17:03:35.288379
