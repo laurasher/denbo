@@ -328,7 +328,6 @@ class ProgrammaticSvgManipulator:
             linewidths=0,
             color="red",
         )
-        print(min(self.df["x_val"]), min(self.df["y_val"]))
         # plt.title(title)
         fig.tight_layout()
 
