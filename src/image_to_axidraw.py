@@ -8,18 +8,18 @@ from aquatint_classes.programmatic_svg import ProgrammaticSvgManipulator
 # Image to aquatint file
 n_aquatint_pixels = "MAX"
 aq = ProgrammaticAquatint(
-    "imgs/leaf_shadows/leaf_shadows_1.jpg",
+    "imgs/tree_shapes/tree_shapes_4.jpg",
     "output",
     n_aquatint_pixels=n_aquatint_pixels,
     # sample_rate=1.5,
     use_sampled_image=False,
     # use_sampled_image=True,
     # data_channel_division_factor=10,
-    data_channel_division_factor=15,
+    # data_channel_division_factor=15,
     # data_channel_division_factor=20,
     # data_channel_division_factor=25,
-    # data_channel_division_factor=1,
-    # data_channel_division_factor=40,
+    # # data_channel_division_factor=1,
+    data_channel_division_factor=40,
     # data_channel_division_factor=50,
     # data_channel_division_factor=60,
     # data_channel_division_factor=30,
