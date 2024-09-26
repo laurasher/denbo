@@ -319,8 +319,8 @@ class ProgrammaticSvgManipulator:
         ax = fig.add_subplot()
         ax.invert_yaxis()
         ax.invert_xaxis()
-        plt.scatter(self.df["x_val"], self.df["y_val"], s=size, color="black")
-        # plt.scatter(self.df["x_val"], self.df["y_val"], s=size, marker="s", linewidths=size/2, color="white", edgecolors="black")
+        # plt.scatter(self.df["x_val"], self.df["y_val"], s=size, color="black")
+        plt.scatter(self.df["x_val"], self.df["y_val"], s=size*100, marker="s", linewidths=size*10, color="none", edgecolors="black")
         plt.scatter(
             min(self.df["x_val"]),
             min(self.df["y_val"]),
@@ -328,7 +328,29 @@ class ProgrammaticSvgManipulator:
             linewidths=0,
             color="red",
         )
-        print(min(self.df["x_val"]), min(self.df["y_val"]))
+        # plt.title(title)
+        fig.tight_layout()
+
+        # square plot
+        ax.set_aspect("equal", adjustable="box")
+        plt.show()
+        fig.clf()
+        return
+
+    def preview_trunc(self, size=0.02):
+        fig = plt.figure()
+        ax = fig.add_subplot()
+        # ax.invert_yaxis()
+        # ax.invert_xaxis()
+        # plt.scatter(self.df["x_val"], self.df["y_val"], s=size, color="black")
+        plt.scatter(self.df["x_val"], self.df["y_val"], s=size*100, marker="s", linewidths=size*10, color="none", edgecolors="black")
+        plt.scatter(
+            max(self.df["x_val"]),
+            max(self.df["y_val"]),
+            s=size * 1000,
+            linewidths=0,
+            color="red",
+        )
         # plt.title(title)
         fig.tight_layout()
 
