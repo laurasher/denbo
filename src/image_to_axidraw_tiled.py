@@ -160,6 +160,22 @@ for tile in tiledict:
     _df = _df[tile["x_mask"]] # horizontal max 16
     _df = _df[tile["y_mask"]] # vertical max 24
     _df = _df.reset_index(drop=True)
+    print(_df)
+
+    # print(_df["x_val"].max())
+    # print(_df["y_val"].max())
+    # print(_df["x_val"].min())
+    # print(_df["y_val"].min())
+    # input()
+    # normalize to origin
+    _df["x_val"] = _df["x_val"]-_df["x_val"].min()
+    _df["y_val"] = _df["y_val"]-_df["y_val"].min()
+    # print(_df["x_val"].max())
+    # print(_df["y_val"].max())
+    # print(_df["x_val"].min())
+    # print(_df["y_val"].min())
+    # input()
+
     _df.to_csv(tile["filename"])
     del _df
 
