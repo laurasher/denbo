@@ -337,7 +337,7 @@ class ProgrammaticSvgManipulator:
         fig.clf()
         return
 
-    def preview_trunc(self, size=0.02):
+    def preview_trunc(self, size=0.02, savepath=""):
         fig = plt.figure()
         ax = fig.add_subplot()
         # ax.invert_yaxis()
@@ -351,12 +351,15 @@ class ProgrammaticSvgManipulator:
             linewidths=0,
             color="red",
         )
-        # plt.title(title)
+        plt.title(savepath.split("concat_")[1].split(".png")[0])
         fig.tight_layout()
 
         # square plot
         ax.set_aspect("equal", adjustable="box")
         plt.show()
+        fig.savefig(
+            os.path.join(savepath), dpi=300
+        )
         fig.clf()
         return
 
