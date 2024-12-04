@@ -155,6 +155,25 @@ class ProgrammaticSvgManipulator:
         except Exception as e:
             self.cls_log(f"Unable to draw_manual_circle {e}")
             return
+        
+    def draw_cross(self, xy, of):
+        try:
+            self.ad.draw_path(
+                [
+                    [xy[1]+(of/2), xy[0]],                    
+                    [xy[1]+(of/2), xy[0]+of]
+                ]
+            )
+            self.ad.draw_path(
+                [
+                    [xy[1], xy[0]+(of/2)],                    
+                    [xy[1]+of, xy[0]+(of/2)]
+                ]
+            )
+            return
+        except Exception as e:
+            self.cls_log(f"Unable to draw_manual_circle {e}")
+            return
 
     def axidraw_calibrate(self):
         self.initialize_ad()
@@ -241,15 +260,11 @@ class ProgrammaticSvgManipulator:
         # Draw xy points
         try:
             xy_current_pos = self.ad.current_pos()
-            # offset_xy = list(reversed(self.add_current_pos_to_path(xy_current_pos)))[0:10] 
-            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))[0:10] 
+            offset_xy = list((self.add_current_pos_to_path(xy_current_pos)))
             for ii, xy in enumerate(offset_xy):
-                # if xy[0]<=12 and xy[1]<=18:
                 self.ad.moveto(xy[1], xy[0])
-                # self.ad.pendown()
-                self.draw_manual_circle(xy, of)
-                # print(f"xy[0]: {xy[0]}")
-                # self.ad.penup()
+                # self.draw_manual_circle(xy, of)
+                self.draw_cross(xy, of)
                 not (ii % 100) and self.cls_log(f"XY progress {ii} / {len(offset_xy)}")
             self.cls_log("Done")
             self.print_position()
